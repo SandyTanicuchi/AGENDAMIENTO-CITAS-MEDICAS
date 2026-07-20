@@ -8,6 +8,7 @@
 <HBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.esfot.epn.proyectotalleres.proyectoagendamientocitas.LoginController"
+      stylesheets="@css/login.css"
       prefWidth="950" prefHeight="620">
 
     <!-- PANEL IZQUIERDO: Imagen + texto -->

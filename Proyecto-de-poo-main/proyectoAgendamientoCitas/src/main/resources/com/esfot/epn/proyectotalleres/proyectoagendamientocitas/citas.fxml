@@ -6,7 +6,7 @@
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.demo1.controlador.CitasController"
+      fx:controller="com.esfot.epn.proyectotalleres.proyectoagendamientocitas.CitasController"
       stylesheets="@css/citas.css"
       prefWidth="850" prefHeight="680"
       minWidth="750" minHeight="600"

@@ -1,0 +1,147 @@
+.root {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-background-color: #F4F6F9;
+}
+
+/* ---- TÍTULO ---- */
+.header {
+    -fx-background-color: #2B5DB8;
+}
+
+.titulo {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* ---- FORMULARIO ---- */
+.formulario {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.field-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4A6572;
+    -fx-pref-width: 90px;
+}
+
+.input-field {
+    -fx-pref-height: 40px;
+    -fx-font-size: 14px;
+    -fx-background-color: #F4F8FB;
+    -fx-border-color: #D5E3EC;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 0 12 0 12;
+}
+
+.input-field:focused {
+    -fx-border-color: #2B5DB8;
+    -fx-border-width: 2;
+    -fx-background-color: #FFFFFF;
+}
+
+/* ---- TEXTAREA (Descripción/Motivo) ---- */
+.text-area {
+    -fx-font-size: 14px;
+    -fx-background-color: #F4F8FB;
+    -fx-border-color: #D5E3EC;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.text-area .content {
+    -fx-background-color: #F4F8FB;
+    -fx-border-color: transparent;
+    -fx-background-radius: 6;
+}
+
+.text-area:focused {
+    -fx-border-color: #2B5DB8;
+    -fx-border-width: 2;
+}
+
+.text-area:focused .content {
+    -fx-background-color: #FFFFFF;
+}
+
+/* ---- BOTONES ---- */
+.botones {
+    -fx-background-color: #FFFFFF;
+}
+
+.btn-buscar {
+    -fx-pref-height: 40px;
+    -fx-pref-width: 100px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #2B5DB8;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.btn-buscar:hover {
+    -fx-background-color: #1A3A6B;
+}
+
+.btn-accion {
+    -fx-pref-height: 42px;
+    -fx-pref-width: 130px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #2B5DB8;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.btn-accion:hover {
+    -fx-background-color: #1A3A6B;
+}
+
+.btn-eliminar {
+    -fx-pref-height: 42px;
+    -fx-pref-width: 130px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #E74C3C;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.btn-eliminar:hover {
+    -fx-background-color: #C0392B;
+}
+
+/* ---- TABLA ---- */
+.tabla {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E0E0E0;
+    -fx-border-radius: 6;
+    -fx-font-size: 13px;
+}
+
+.table-view .column-header {
+    -fx-background-color: #2B5DB8;
+    -fx-pref-height: 40px;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+
+.table-view .table-row-cell {
+    -fx-pref-height: 36px;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #BFD9F2;
+    -fx-text-fill: #1A3A6B;
+}

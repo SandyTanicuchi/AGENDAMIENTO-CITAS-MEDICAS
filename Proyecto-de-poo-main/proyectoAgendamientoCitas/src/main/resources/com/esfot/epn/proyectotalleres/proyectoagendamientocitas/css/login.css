@@ -1,0 +1,122 @@
+.root {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* ---- PANEL IZQUIERDO ---- */
+.panel-left {
+    -fx-background-color: linear-gradient(to bottom, #BFD9F2, #E8F4FF);
+}
+
+.panel-left-overlay {
+    -fx-background-color: transparent;
+}
+
+.brand-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A3A6B;
+}
+
+.brand-sub {
+    -fx-font-size: 14px;
+    -fx-text-fill: #4A6FA5;
+}
+
+.hero-title {
+    -fx-font-size: 34px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A3A6B;
+}
+
+.hero-desc {
+    -fx-font-size: 15px;
+    -fx-text-fill: #4A6FA5;
+    -fx-wrap-text: true;
+}
+
+.bullet-icon {
+    -fx-font-size: 22px;
+    -fx-background-color: #2B5DB8;
+    -fx-background-radius: 50;
+    -fx-padding: 10;
+}
+
+.bullet-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A3A6B;
+}
+
+.bullet-desc {
+    -fx-font-size: 13px;
+    -fx-text-fill: #4A6FA5;
+}
+
+/* ---- PANEL DERECHO ---- */
+.panel-right {
+    -fx-background-color: #FFFFFF;
+}
+
+.user-icon {
+    -fx-font-size: 54px;
+    -fx-text-fill: #2B5DB8;
+}
+
+.form-title {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A3A6B;
+}
+
+.form-sub {
+    -fx-font-size: 14px;
+    -fx-text-fill: #8FA3B1;
+}
+
+/* ---- Campos ---- */
+.field-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4A6572;
+}
+
+.input-field {
+    -fx-pref-height: 48px;
+    -fx-font-size: 14px;
+    -fx-background-color: #F4F8FB;
+    -fx-border-color: #D5E3EC;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 0 14 0 14;
+    -fx-text-fill: #2C3E50;
+}
+
+.input-field:focused {
+    -fx-border-color: #2B5DB8;
+    -fx-border-width: 2;
+    -fx-background-color: #FFFFFF;
+}
+
+.error-label {
+    -fx-text-fill: #E74C3C;
+    -fx-font-size: 13px;
+}
+
+/* ---- Botón ---- */
+.btn-login {
+    -fx-pref-height: 50px;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #2B5DB8;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.btn-login:hover {
+    -fx-background-color: #1A3A6B;
+}
+
+.btn-login:pressed {
+    -fx-background-color: #0F2547;
+}

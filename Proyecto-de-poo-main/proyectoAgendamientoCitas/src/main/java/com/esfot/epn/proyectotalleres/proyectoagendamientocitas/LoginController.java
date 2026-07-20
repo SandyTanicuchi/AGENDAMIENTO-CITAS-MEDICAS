@@ -2,9 +2,14 @@ package com.esfot.epn.proyectotalleres.proyectoagendamientocitas;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -39,9 +44,29 @@ public class LoginController implements Initializable {
         // TODO: reemplazar con consulta a la BD
         if (usuario.equals("admin") && password.equals("1234")) {
             ocultarError();
-            System.out.println("Login exitoso → " + rol);
+            irADashboard();
         } else {
             mostrarError("Usuario o contraseña incorrectos.");
+        }
+    }
+
+    /**
+     * Carga dashboard.fxml y lo pone en el mismo Stage que ya está abierto,
+     * reemplazando la ventana de login.
+     */
+    private void irADashboard() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("dashboard.fxml"));
+            Parent root = loader.load();
+
+            // Obtiene el Stage actual a partir de cualquier nodo de la escena de login
+            Stage stage = (Stage) txtUsuario.getScene().getWindow();
+            stage.setScene(new Scene(root, 1280, 800));
+            stage.setTitle("Sistema de Gestión de Citas Médicas");
+            stage.centerOnScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+            mostrarError("No se pudo cargar el panel principal.");
         }
     }
 

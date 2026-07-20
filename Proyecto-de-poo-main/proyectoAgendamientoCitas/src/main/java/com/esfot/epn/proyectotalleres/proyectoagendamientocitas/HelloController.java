@@ -169,4 +169,24 @@ public class HelloController implements Initializable {
         // Agregar clase activa al botón presionado
         botonActivo.getStyleClass().add("menu-button-active");
     }
+
+    @FXML
+    private void abrirFormularioCita() {
+        try {
+            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(
+                    getClass().getResource("citas.fxml")
+            );
+            javafx.scene.Parent root = loader.load();
+
+            javafx.stage.Stage stage = new javafx.stage.Stage();
+            stage.setTitle("Nueva Cita");
+            stage.initModality(javafx.stage.Modality.APPLICATION_MODAL);
+            stage.setScene(new javafx.scene.Scene(root));
+            stage.showAndWait();
+
+            mostrarDatosDashboard(); // refresca la tabla al cerrar el formulario
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

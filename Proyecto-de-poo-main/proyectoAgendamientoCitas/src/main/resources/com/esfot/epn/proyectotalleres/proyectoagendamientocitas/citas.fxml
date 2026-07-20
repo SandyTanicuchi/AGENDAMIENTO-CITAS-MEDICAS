@@ -8,19 +8,19 @@
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.esfot.epn.proyectotalleres.proyectoagendamientocitas.CitasController"
       stylesheets="@css/citas.css"
-      prefWidth="850" prefHeight="680"
-      minWidth="750" minHeight="600"
+      prefWidth="620" prefHeight="560"
+      minWidth="560" minHeight="480"
       spacing="0">
 
     <!-- TÍTULO -->
     <VBox styleClass="header" alignment="CENTER">
-        <padding><Insets top="26" bottom="26"/></padding>
+        <padding><Insets top="16" bottom="16"/></padding>
         <Label text="Gestión de Citas Médicas" styleClass="titulo"/>
     </VBox>
 
     <!-- FORMULARIO -->
-    <GridPane styleClass="formulario" hgap="14" vgap="18">
-        <padding><Insets top="28" bottom="28" left="50" right="50"/></padding>
+    <GridPane styleClass="formulario" hgap="10" vgap="10">
+        <padding><Insets top="16" bottom="16" left="30" right="30"/></padding>
         <columnConstraints>
             <ColumnConstraints minWidth="90" prefWidth="90"/>
             <ColumnConstraints hgrow="ALWAYS"/>
@@ -41,9 +41,9 @@
                    GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 
         <Label text="Fecha:" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="field-label"/>
-        <TextField fx:id="txtFecha" styleClass="input-field" maxWidth="Infinity"
-                   promptText="DD/MM/AAAA"
-                   GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+        <DatePicker fx:id="dpFecha" styleClass="input-field" maxWidth="Infinity"
+                    promptText="Seleccione una fecha"
+                    GridPane.columnIndex="1" GridPane.rowIndex="3"/>
 
         <Label text="Hora:" GridPane.columnIndex="0" GridPane.rowIndex="4" styleClass="field-label"/>
         <TextField fx:id="txtHora" styleClass="input-field" maxWidth="Infinity"
@@ -55,7 +55,7 @@
                   GridPane.columnIndex="1" GridPane.rowIndex="5"/>
 
         <Label text="Descripción:" GridPane.columnIndex="0" GridPane.rowIndex="6" styleClass="field-label"/>
-        <TextArea fx:id="txtMotivo" prefHeight="70" wrapText="true" maxWidth="Infinity"
+        <TextArea fx:id="txtMotivo" prefHeight="50" wrapText="true" maxWidth="Infinity"
                   promptText="Motivo de la cita..."
                   styleClass="input-field"
                   GridPane.columnIndex="1" GridPane.rowIndex="6"/>
@@ -63,8 +63,8 @@
     </GridPane>
 
     <!-- BOTONES -->
-    <HBox styleClass="botones" spacing="14" alignment="CENTER">
-        <padding><Insets top="16" bottom="16"/></padding>
+    <HBox styleClass="botones" spacing="10" alignment="CENTER">
+        <padding><Insets top="10" bottom="10"/></padding>
         <Button text="Insertar"  onAction="#handleInsertar"  styleClass="btn-accion"/>
         <Button text="Modificar" onAction="#handleModificar" styleClass="btn-accion"/>
         <Button text="Mostrar"   onAction="#handleMostrar"   styleClass="btn-accion"/>
@@ -73,7 +73,7 @@
 
     <!-- TABLA -->
     <TableView fx:id="tablaCitas" VBox.vgrow="ALWAYS" styleClass="tabla">
-        <padding><Insets left="24" right="24" bottom="24"/></padding>
+        <padding><Insets left="14" right="14" bottom="14"/></padding>
         <columns>
             <TableColumn fx:id="colId"       text="ID"          prefWidth="50"/>
             <TableColumn fx:id="colPaciente" text="Paciente"    prefWidth="140"/>

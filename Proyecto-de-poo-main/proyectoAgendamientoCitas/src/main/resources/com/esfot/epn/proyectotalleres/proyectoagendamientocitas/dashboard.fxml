@@ -354,8 +354,7 @@
                                 <Region HBox.hgrow="ALWAYS" />
                                 <HBox spacing="10.0">
                                     <children>
-                                        <Button fx:id="btnCita" mnemonicParsing="false" styleClass="action-button, action-button-success" text=" Nueva Cita">
-                                            <graphic>
+                                        <Button fx:id="btnCita" mnemonicParsing="false" onAction="#abrirFormularioCita" styleClass="action-button, action-button-success" text=" Nueva Cita">                                            <graphic>
                                                 <FontIcon iconColor="white" iconLiteral="fas-calendar-plus" iconSize="12" />
                                             </graphic>
                                         </Button>

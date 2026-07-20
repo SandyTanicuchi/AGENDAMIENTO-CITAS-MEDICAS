@@ -4,52 +4,67 @@
 
 /* ---- PANEL IZQUIERDO ---- */
 .panel-left {
-    -fx-background-color: linear-gradient(to bottom, #BFD9F2, #E8F4FF);
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%,
+    #16305E 0%, #1A3A6B 35%, #2B5DB8 75%, #3E76D8 100%);
 }
 
 .panel-left-overlay {
     -fx-background-color: transparent;
 }
 
+/* Círculos decorativos: dan profundidad sin necesitar una foto */
+.decor-circle-1 {
+    -fx-fill: rgba(255,255,255,0.06);
+}
+
+.decor-circle-2 {
+    -fx-fill: rgba(255,255,255,0.05);
+}
+
+.decor-circle-3 {
+    -fx-fill: rgba(62,118,216,0.35);
+}
+
 .brand-title {
     -fx-font-size: 22px;
     -fx-font-weight: bold;
-    -fx-text-fill: #1A3A6B;
+    -fx-text-fill: #FFFFFF;
 }
 
 .brand-sub {
     -fx-font-size: 14px;
-    -fx-text-fill: #4A6FA5;
+    -fx-text-fill: rgba(255,255,255,0.65);
 }
 
 .hero-title {
     -fx-font-size: 34px;
     -fx-font-weight: bold;
-    -fx-text-fill: #1A3A6B;
+    -fx-text-fill: #FFFFFF;
 }
 
 .hero-desc {
     -fx-font-size: 15px;
-    -fx-text-fill: #4A6FA5;
+    -fx-text-fill: rgba(255,255,255,0.75);
     -fx-wrap-text: true;
 }
 
 .bullet-icon {
-    -fx-font-size: 22px;
-    -fx-background-color: #2B5DB8;
+    -fx-font-size: 20px;
+    -fx-background-color: rgba(255,255,255,0.14);
     -fx-background-radius: 50;
     -fx-padding: 10;
+    -fx-text-fill: #FFFFFF;
 }
 
 .bullet-title {
     -fx-font-size: 15px;
     -fx-font-weight: bold;
-    -fx-text-fill: #1A3A6B;
+    -fx-text-fill: #FFFFFF;
 }
 
 .bullet-desc {
     -fx-font-size: 13px;
-    -fx-text-fill: #4A6FA5;
+    -fx-text-fill: rgba(255,255,255,0.65);
 }
 
 /* ---- PANEL DERECHO ---- */

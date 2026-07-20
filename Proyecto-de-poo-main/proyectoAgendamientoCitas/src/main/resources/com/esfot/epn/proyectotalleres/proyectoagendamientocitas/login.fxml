@@ -3,6 +3,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
 
 <HBox xmlns="http://javafx.com/javafx"
@@ -13,6 +14,15 @@
 
     <!-- PANEL IZQUIERDO: Imagen + texto -->
     <StackPane styleClass="panel-left" prefWidth="480">
+
+        <!-- Círculos decorativos (dan profundidad sin necesitar una foto) -->
+        <Circle styleClass="decor-circle-1" radius="170"
+                StackPane.alignment="TOP_RIGHT" translateX="90" translateY="-90"/>
+        <Circle styleClass="decor-circle-2" radius="110"
+                StackPane.alignment="BOTTOM_LEFT" translateX="-60" translateY="70"/>
+        <Circle styleClass="decor-circle-3" radius="55"
+                StackPane.alignment="TOP_LEFT" translateX="40" translateY="120"/>
+
         <VBox alignment="BOTTOM_LEFT" styleClass="panel-left-overlay">
             <padding><Insets top="40" bottom="60" left="48" right="48"/></padding>
             <Label text="Gestión de Citas" styleClass="brand-title"/>

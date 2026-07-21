@@ -68,23 +68,17 @@ public class LoginController implements Initializable {
             if (rs.next()) {
 
                 if (rol.equals("Cliente")) {
-                    Sesion.iniciarSesion(
-                            usuario,
-                            Sesion.Rol.CLIENTE);
-
+                    Sesion.iniciarSesion(usuario,Sesion.Rol.CLIENTE);
                 } else if (rol.equals("Médico")) {
                     Sesion.iniciarSesion(
-                            usuario,
-                            Sesion.Rol.MEDICO);
+                            usuario,Sesion.Rol.MEDICO);
                 } else if (rol.equals("Administrador")) {
-                    Sesion.iniciarSesion(
-                            usuario,
-                            Sesion.Rol.ADMINISTRADOR);
+                    Sesion.iniciarSesion(usuario,Sesion.Rol.ADMINISTRADOR);
                 }
                 ocultarError();
                 irADashboard();
             } else {
-                System.out.println("Usuario o contraseña incorrectos" );
+                mostrarError("Usuario o contraseña incorrectos" );
             }
             con.close();
         } catch (Exception e) {

@@ -8,9 +8,10 @@ public class Pacientes {
     private String telefono;
     private String correo;
     private String direccion;
-    private String estado;
 
-    public Pacientes(int id, String cedula, String nombre, String apellido, String telefono, String correo, String direccion, String estado) {
+    public Pacientes() {}
+
+    public Pacientes(int id, String cedula, String nombre, String apellido, String telefono, String correo, String direccion) {
         this.id = id;
         this.cedula = cedula;
         this.nombre = nombre;
@@ -18,7 +19,6 @@ public class Pacientes {
         this.telefono = telefono;
         this.correo = correo;
         this.direccion = direccion;
-        this.estado = estado;
     }
 
     public int getId() { return id; }
@@ -28,7 +28,6 @@ public class Pacientes {
     public String getTelefono() { return telefono; }
     public String getCorreo() { return correo; }
     public String getDireccion() { return direccion; }
-    public String getEstado() { return estado; }
 
     public void setId(int id) {
         this.id = id;
@@ -58,7 +57,4 @@ public class Pacientes {
         this.direccion = direccion;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
 }

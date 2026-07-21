@@ -10,10 +10,14 @@
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.esfot.epn.proyectotalleres.proyectoagendamientocitas.LoginController"
       stylesheets="@css/login.css"
-      prefWidth="950" prefHeight="620">
+      fx:id="rootBox">
 
     <!-- PANEL IZQUIERDO: Imagen + texto -->
-    <StackPane styleClass="panel-left" prefWidth="480">
+    <!-- Ancho proporcional (38% del ancho real de la ventana) en vez de un valor fijo:
+         así se ve bien tanto en pantallas chicas como maximizadas -->
+    <StackPane styleClass="panel-left"
+               prefWidth="${rootBox.width * 0.38}"
+               minWidth="380" maxWidth="560">
 
         <!-- Círculos decorativos (dan profundidad sin necesitar una foto) -->
         <Circle styleClass="decor-circle-1" radius="170"
@@ -23,40 +27,47 @@
         <Circle styleClass="decor-circle-3" radius="55"
                 StackPane.alignment="TOP_LEFT" translateX="40" translateY="120"/>
 
-        <VBox alignment="BOTTOM_LEFT" styleClass="panel-left-overlay">
-            <padding><Insets top="40" bottom="60" left="48" right="48"/></padding>
+        <VBox alignment="CENTER_LEFT" styleClass="panel-left-overlay">
+            <padding><Insets top="40" bottom="40" left="48" right="48"/></padding>
+
             <Label text="Gestión de Citas" styleClass="brand-title"/>
             <Label text="Sistema Médico" styleClass="brand-sub"/>
-            <Region prefHeight="48"/>
+
+            <Region VBox.vgrow="ALWAYS" minHeight="24" prefHeight="48"/>
+
             <Label text="Cuidamos tu salud," styleClass="hero-title"/>
             <Label text="organizamos tu tiempo." styleClass="hero-title"/>
-            <Region prefHeight="18"/>
+            <Region prefHeight="16"/>
             <Label text="Inicia sesión para acceder a tu panel y gestionar tus citas de manera sencilla."
                    styleClass="hero-desc" wrapText="true" maxWidth="380"/>
-            <Region prefHeight="40"/>
-            <HBox spacing="14" alignment="CENTER_LEFT">
-                <Label text="📅" styleClass="bullet-icon"/>
-                <VBox spacing="2">
-                    <Label text="Gestiona tus citas" styleClass="bullet-title"/>
-                    <Label text="Programa y organiza tus consultas." styleClass="bullet-desc"/>
-                </VBox>
-            </HBox>
-            <Region prefHeight="18"/>
-            <HBox spacing="14" alignment="CENTER_LEFT">
-                <Label text="👥" styleClass="bullet-icon"/>
-                <VBox spacing="2">
-                    <Label text="Pacientes" styleClass="bullet-title"/>
-                    <Label text="Consulta el historial y datos de tus pacientes." styleClass="bullet-desc"/>
-                </VBox>
-            </HBox>
-            <Region prefHeight="18"/>
-            <HBox spacing="14" alignment="CENTER_LEFT">
-                <Label text="📊" styleClass="bullet-icon"/>
-                <VBox spacing="2">
-                    <Label text="Agenda inteligente" styleClass="bullet-title"/>
-                    <Label text="Optimiza tu tiempo y mejora la atención." styleClass="bullet-desc"/>
-                </VBox>
-            </HBox>
+
+            <Region VBox.vgrow="ALWAYS" minHeight="24" prefHeight="40"/>
+
+            <VBox spacing="20">
+                <HBox spacing="14" alignment="CENTER_LEFT">
+                    <Label text="📅" styleClass="bullet-icon"/>
+                    <VBox spacing="2">
+                        <Label text="Gestiona tus citas" styleClass="bullet-title"/>
+                        <Label text="Programa y organiza tus consultas." styleClass="bullet-desc"/>
+                    </VBox>
+                </HBox>
+                <HBox spacing="14" alignment="CENTER_LEFT">
+                    <Label text="👥" styleClass="bullet-icon"/>
+                    <VBox spacing="2">
+                        <Label text="Pacientes" styleClass="bullet-title"/>
+                        <Label text="Consulta el historial y datos de tus pacientes." styleClass="bullet-desc"/>
+                    </VBox>
+                </HBox>
+                <HBox spacing="14" alignment="CENTER_LEFT">
+                    <Label text="📊" styleClass="bullet-icon"/>
+                    <VBox spacing="2">
+                        <Label text="Agenda inteligente" styleClass="bullet-title"/>
+                        <Label text="Optimiza tu tiempo y mejora la atención." styleClass="bullet-desc"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS" minHeight="16" prefHeight="30"/>
         </VBox>
     </StackPane>
 

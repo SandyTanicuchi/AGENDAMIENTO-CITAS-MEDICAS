@@ -11,7 +11,7 @@ public class PacientesDAO {
     private final ConexioDashboard conexionManager = new ConexioDashboard();
 
     public boolean registrarPaciente(Pacientes pacientes) {
-        String query = "INSERT INTO PACIENTES (cedula, nombre, apellido, telefono, correo, direccion, estado) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO PACIENTES (cedula, nombre, apellido, telefono, correo, direccion) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = conexionManager.conectar();
              PreparedStatement ps = conn.prepareStatement(query)) {
@@ -21,8 +21,6 @@ public class PacientesDAO {
             ps.setString(4, pacientes.getTelefono());
             ps.setString(5, pacientes.getCorreo());
             ps.setString(6, pacientes.getDireccion());
-            ps.setString(7, pacientes.getEstado());
-
             return ps.executeUpdate() > 0;
 
         } catch (SQLException e) {
@@ -30,9 +28,9 @@ public class PacientesDAO {
             return false;
         }
     }
-    public boolean actualizarPaciente(Pacientes paciente) {
 
-        String query = "UPDATE PACIENTES SET cedula=?, nombre=?, apellido=?, telefono=?, correo=?, direccion=?, estado=? WHERE id_paciente=?";
+    public boolean actualizarPaciente(Pacientes paciente) {
+        String query = "UPDATE PACIENTES SET cedula=?, nombre=?, apellido=?, telefono=?, correo=?, direccion=? WHERE id_paciente=?";
 
         try (Connection conn = conexionManager.conectar();
              PreparedStatement ps = conn.prepareStatement(query)) {
@@ -43,8 +41,7 @@ public class PacientesDAO {
             ps.setString(4, paciente.getTelefono());
             ps.setString(5, paciente.getCorreo());
             ps.setString(6, paciente.getDireccion());
-            ps.setString(7, paciente.getEstado());
-            ps.setInt(8, paciente.getId());
+            ps.setInt(7, paciente.getId()); // <-- CORREGIDO AQUÍ (era 8, ahora es 7)
 
             return ps.executeUpdate() > 0;
 
@@ -53,8 +50,8 @@ public class PacientesDAO {
             return false;
         }
     }
-    public boolean eliminarPaciente(int id) {
 
+    public boolean eliminarPaciente(int id) {
         String query = "DELETE FROM PACIENTES WHERE id_paciente=?";
 
         try (Connection conn = conexionManager.conectar();
@@ -72,7 +69,7 @@ public class PacientesDAO {
 
     public ObservableList<Pacientes> obtenerListaPacientes() {
         ObservableList<Pacientes> listaPacientes = FXCollections.observableArrayList();
-        String query = "SELECT id_paciente, cedula, nombre, apellido, telefono, correo, direccion, estado FROM PACIENTES";
+        String query = "SELECT id_paciente, cedula, nombre, apellido, telefono, correo, direccion FROM PACIENTES";
 
         try (Connection conn = conexionManager.conectar();
              PreparedStatement ps = conn.prepareStatement(query);
@@ -86,8 +83,7 @@ public class PacientesDAO {
                         rs.getString("apellido"),
                         rs.getString("telefono"),
                         rs.getString("correo"),
-                        rs.getString("direccion"),
-                        rs.getString("estado")
+                        rs.getString("direccion")
                 );
                 listaPacientes.add(pacientes);
             }

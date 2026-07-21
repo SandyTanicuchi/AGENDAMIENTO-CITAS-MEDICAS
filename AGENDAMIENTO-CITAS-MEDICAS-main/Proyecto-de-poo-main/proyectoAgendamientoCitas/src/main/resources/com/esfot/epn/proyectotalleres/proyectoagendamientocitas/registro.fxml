@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.esfot.epn.proyectotalleres.proyectoagendamientocitas.RegistroController"
+      stylesheets="@css/login.css"
+      styleClass="panel-right"
+      prefWidth="420" prefHeight="560"
+      minWidth="420" minHeight="560"
+      alignment="CENTER">
+
+    <padding><Insets top="40" bottom="40" left="40" right="40"/></padding>
+
+    <Label text="👤" styleClass="user-icon" alignment="CENTER" maxWidth="Infinity"/>
+    <Region prefHeight="14"/>
+    <Label text="Crear cuenta" styleClass="form-title" alignment="CENTER" maxWidth="Infinity"/>
+    <Region prefHeight="4"/>
+    <Label text="Regístrate para acceder al sistema" styleClass="form-sub" alignment="CENTER" maxWidth="Infinity"/>
+
+    <Region prefHeight="30"/>
+
+    <Label text="Nombre completo" styleClass="field-label"/>
+    <Region prefHeight="6"/>
+    <TextField fx:id="txtNombre" promptText="Ingrese su nombre completo"
+               styleClass="input-field" maxWidth="Infinity"/>
+
+    <Region prefHeight="16"/>
+
+    <Label text="Rol" styleClass="field-label"/>
+    <Region prefHeight="6"/>
+    <ComboBox fx:id="comboRol" promptText="Seleccione su rol"
+              styleClass="input-field" maxWidth="Infinity"/>
+
+    <Region prefHeight="16"/>
+
+    <Label text="Usuario" styleClass="field-label"/>
+    <Region prefHeight="6"/>
+    <TextField fx:id="txtUsuario" promptText="Cree un nombre de usuario"
+               styleClass="input-field" maxWidth="Infinity"/>
+
+    <Region prefHeight="16"/>
+
+    <Label text="Contraseña" styleClass="field-label"/>
+    <Region prefHeight="6"/>
+    <PasswordField fx:id="txtPassword" promptText="••••••••"
+                   styleClass="input-field" maxWidth="Infinity"/>
+
+    <Region prefHeight="16"/>
+
+    <Label text="Confirmar contraseña" styleClass="field-label"/>
+    <Region prefHeight="6"/>
+    <PasswordField fx:id="txtConfirmarPassword" promptText="••••••••"
+                   styleClass="input-field" maxWidth="Infinity"/>
+
+    <Region prefHeight="8"/>
+    <Label fx:id="lblError" styleClass="error-label" visible="false" wrapText="true"/>
+
+    <Region prefHeight="24"/>
+    <Button text="Crear cuenta" onAction="#handleRegistrar"
+            styleClass="btn-login" maxWidth="Infinity"/>
+    <Region prefHeight="10"/>
+    <Button text="Cancelar" onAction="#handleCancelar"
+            styleClass="btn-secundario" maxWidth="Infinity"/>
+
+</VBox>

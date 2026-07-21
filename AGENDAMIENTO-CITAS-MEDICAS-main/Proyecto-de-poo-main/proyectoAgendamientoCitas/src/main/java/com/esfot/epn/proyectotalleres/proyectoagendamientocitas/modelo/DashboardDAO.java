@@ -1,13 +1,4 @@
-package com.esfot.epn.proyectotalleres.proyectoagendamientocitas.modelo;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
-public class DashboardDAO {
+{
     private final ConexioDashboard conexionManager = new ConexioDashboard();
 
     public ObservableList<Pacientes> obtenerPacientes() {
@@ -30,9 +21,7 @@ public class DashboardDAO {
                             rs.getString("apellido"),
                             rs.getString("telefono"),
                             rs.getString("correo"),
-                            rs.getString("direccion"),
-                            rs.getString("estado")
-                    ));
+                            rs.getString("direccion")));
                 }
             }
         } catch (Exception e) {
@@ -48,10 +37,10 @@ public class DashboardDAO {
 
     private ObservableList<Pacientes> obtenerPacientesMock() {
         ObservableList<Pacientes> lista = FXCollections.observableArrayList();
-        lista.add(new Pacientes(1, "1723456789", "Juan", "Pérez", "0987654321", "juan.perez@email.com", "Av. Amazonas N24-12", "Activo"));
-        lista.add(new Pacientes(2, "1712345678", "María", "Gómez", "0998877665", "maria.gomez@email.com", "Calle Larga y Solano", "Activo"));
-        lista.add(new Pacientes(3, "1709876543", "Carlos", "Andrade", "0976543210", "carlos.andrade@email.com", "La Prensa y El Inca", "Inactivo"));
-        lista.add(new Pacientes(4, "1755566778", "Ana", "Martínez", "0955511223", "ana.martinez@email.com", "Cumbayá, San Juan", "Activo"));
+        lista.add(new Pacientes(1, "1723456789", "Juan", "Pérez", "0987654321", "juan.perez@email.com", "Av. Amazonas N24-12"));
+        lista.add(new Pacientes(2, "1712345678", "María", "Gómez", "0998877665", "maria.gomez@email.com", "Calle Larga y Solano"));
+        lista.add(new Pacientes(3, "1709876543", "Carlos", "Andrade", "0976543210", "carlos.andrade@email.com", "La Prensa y El Inca"));
+        lista.add(new Pacientes(4, "1755566778", "Ana", "Martínez", "0955511223", "ana.martinez@email.com", "Cumbayá, San Juan"));
         return lista;
     }
 

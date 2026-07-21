@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -67,6 +68,27 @@ public class LoginController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
             mostrarError("No se pudo cargar el panel principal.");
+        }
+    }
+
+    @FXML
+    private void handleAbrirRegistro() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("registro.fxml"));
+            Parent root = loader.load();
+
+            Stage stageLogin = (Stage) txtUsuario.getScene().getWindow();
+
+            Stage stageRegistro = new Stage();
+            stageRegistro.setTitle("Crear cuenta");
+            stageRegistro.initOwner(stageLogin);
+            stageRegistro.initModality(Modality.APPLICATION_MODAL);
+            stageRegistro.setResizable(false);
+            stageRegistro.setScene(new Scene(root));
+            stageRegistro.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+            mostrarError("No se pudo abrir la ventana de registro.");
         }
     }
 

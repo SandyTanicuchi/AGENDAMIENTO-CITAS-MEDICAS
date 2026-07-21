@@ -98,6 +98,13 @@
             <Region prefHeight="32"/>
             <Button text="  Iniciar sesión" onAction="#handleLogin"
                     styleClass="btn-login" maxWidth="Infinity"/>
+
+            <Region prefHeight="18"/>
+            <HBox alignment="CENTER" maxWidth="Infinity">
+                <Label text="¿No tienes cuenta?" styleClass="form-sub"/>
+                <Region prefWidth="6"/>
+                <Hyperlink text="Regístrate" onAction="#handleAbrirRegistro" styleClass="link-registro"/>
+            </HBox>
         </VBox>
     </VBox>
 

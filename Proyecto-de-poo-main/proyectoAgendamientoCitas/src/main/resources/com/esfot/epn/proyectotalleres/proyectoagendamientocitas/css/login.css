@@ -5,7 +5,7 @@
 /* ---- PANEL IZQUIERDO ---- */
 .panel-left {
     -fx-background-color: linear-gradient(from 0% 0% to 100% 100%,
-    #16305E 0%, #1A3A6B 35%, #2B5DB8 75%, #3E76D8 100%);
+            #16305E 0%, #1A3A6B 35%, #2B5DB8 75%, #3E76D8 100%);
 }
 
 .panel-left-overlay {
@@ -134,4 +134,33 @@
 
 .btn-login:pressed {
     -fx-background-color: #0F2547;
+}
+
+.link-registro {
+    -fx-text-fill: #2B5DB8;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-border-color: transparent;
+    -fx-underline: false;
+}
+
+.link-registro:hover {
+    -fx-text-fill: #1A3A6B;
+    -fx-underline: true;
+}
+
+.btn-secundario {
+    -fx-pref-height: 50px;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4A6572;
+    -fx-background-color: #F4F8FB;
+    -fx-border-color: #D5E3EC;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.btn-secundario:hover {
+    -fx-background-color: #E8F0F5;
 }

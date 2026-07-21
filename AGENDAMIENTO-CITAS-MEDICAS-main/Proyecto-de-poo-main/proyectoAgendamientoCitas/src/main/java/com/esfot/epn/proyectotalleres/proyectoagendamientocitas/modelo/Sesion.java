@@ -19,5 +19,5 @@ public class Sesion {
 
     public static boolean esAdministrador() { return rolActual == Rol.ADMINISTRADOR; }
     public static boolean esMedico() { return rolActual == Rol.MEDICO; }
-    public static boolean esRecepcionista() { return rolActual == Rol.CLIENTE; }
+    public static boolean esCliente() { return rolActual == Rol.CLIENTE; }
 }

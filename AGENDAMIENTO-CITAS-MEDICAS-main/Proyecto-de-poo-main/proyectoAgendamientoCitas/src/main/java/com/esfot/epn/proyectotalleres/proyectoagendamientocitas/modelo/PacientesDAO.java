@@ -41,7 +41,7 @@ public class PacientesDAO {
             ps.setString(4, paciente.getTelefono());
             ps.setString(5, paciente.getCorreo());
             ps.setString(6, paciente.getDireccion());
-            ps.setInt(7, paciente.getId()); // <-- CORREGIDO AQUÍ (era 8, ahora es 7)
+            ps.setInt(7, paciente.getId());
 
             return ps.executeUpdate() > 0;
 

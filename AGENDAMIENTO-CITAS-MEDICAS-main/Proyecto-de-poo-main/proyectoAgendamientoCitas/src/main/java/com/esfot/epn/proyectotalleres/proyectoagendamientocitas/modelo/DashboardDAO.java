@@ -1,4 +1,13 @@
-{
+package com.esfot.epn.proyectotalleres.proyectoagendamientocitas.modelo;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class DashboardDAO {
     private final ConexioDashboard conexionManager = new ConexioDashboard();
 
     public ObservableList<Pacientes> obtenerPacientes() {

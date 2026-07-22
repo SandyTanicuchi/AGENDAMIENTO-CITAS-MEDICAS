@@ -11,15 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/**
- * Controlador para la vista de Gestión de Doctores (InterfazDoctor.fxml).
- *
- * CORRECCIONES:
- *  - Usa DoctoresDAO para persistir en BD (ya no trabaja solo en memoria)
- *  - Se agrega validación de campos antes de insertar/modificar
- *  - Se agrega confirmación antes de eliminar
- *  - El contadorId local ya no es necesario (lo maneja la BD con AUTO_INCREMENT)
- */
+
 public class InterfazDoctorController implements Initializable {
 
     // Campos del formulario
@@ -43,9 +35,6 @@ public class InterfazDoctorController implements Initializable {
 
     private final DoctoresDAO dao = new DoctoresDAO();
 
-    // ----------------------------------------------------------------
-    // INICIALIZACIÓN
-    // ----------------------------------------------------------------
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -77,7 +66,6 @@ public class InterfazDoctorController implements Initializable {
 
         cargarDoctores();
 
-        // Al seleccionar un doctor de la tabla, rellena el formulario
         tablaDoctores.getSelectionModel().selectedItemProperty().addListener(
                 (obs, oldVal, doctor) -> {
                     if (doctor != null) {
@@ -93,17 +81,9 @@ public class InterfazDoctorController implements Initializable {
         );
     }
 
-    // ----------------------------------------------------------------
-    // CARGAR TABLA
-    // ----------------------------------------------------------------
-
     private void cargarDoctores() {
         tablaDoctores.setItems(dao.obtenerListaDoctores());
     }
-
-    // ----------------------------------------------------------------
-    // CRUD
-    // ----------------------------------------------------------------
 
     @FXML
     private void handleInsertar() {
@@ -137,8 +117,7 @@ public class InterfazDoctorController implements Initializable {
             return;
         }
         if (!validarCampos()) return;
-
-        // Actualizar el objeto con los nuevos valores del formulario
+        
         seleccionado.setNombre(txtNombres.getText().trim());
         seleccionado.setApellido(txtApellidos.getText().trim());
         seleccionado.setEspecialidad(comboEspecialidad.getValue());
@@ -186,11 +165,6 @@ public class InterfazDoctorController implements Initializable {
             }
         });
     }
-
-    // ----------------------------------------------------------------
-    // AUXILIARES
-    // ----------------------------------------------------------------
-
     private void limpiarCampos() {
         txtId.clear();
         txtNombres.clear();

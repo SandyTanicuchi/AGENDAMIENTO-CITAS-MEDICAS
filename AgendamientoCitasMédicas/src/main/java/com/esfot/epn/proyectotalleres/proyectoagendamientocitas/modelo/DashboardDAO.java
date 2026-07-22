@@ -7,21 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-/**
- * DAO de solo lectura para el Dashboard.
- * Carga pacientes, doctores y citas para mostrar en las tablas del panel principal.
- * Si la base de datos no está disponible, devuelve datos mock
- * para que la aplicación pueda funcionar en modo demostración.
- *
- * Fase 2 - Bloque 1: Integración con ConexionMySQL.
- * Uso de VW_CITAS_COMPLETAS para soportar los nuevos campos (H-14).
- */
 public class DashboardDAO {
-
-    // ----------------------------------------------------------------
-    // PACIENTES
-    // ----------------------------------------------------------------
-
     public ObservableList<Pacientes> obtenerPacientes() {
         ObservableList<Pacientes> lista = FXCollections.observableArrayList();
         String query = "SELECT id_paciente, cedula, nombre, apellido, telefono, correo, direccion, estado " +
@@ -63,11 +49,6 @@ public class DashboardDAO {
         lista.add(new Pacientes(4, "1755566778", "Ana",    "Martínez", "0955511223", "ana.martinez@email.com",  "Cumbayá, San Juan",      "Activo"));
         return lista;
     }
-
-    // ----------------------------------------------------------------
-    // DOCTORES
-    // ----------------------------------------------------------------
-
     public ObservableList<Doctores> obtenerDoctores() {
         ObservableList<Doctores> lista = FXCollections.observableArrayList();
         String query = "SELECT id_doctor, nombre, apellido, especialidad, telefono, correo, estado " +
@@ -109,11 +90,6 @@ public class DashboardDAO {
         lista.add(new Doctores(5, "Roberto",  "Mora",    "Medicina General", "0995678901", "roberto.mora@hospital.com",    "Activo"));
         return lista;
     }
-
-    // ----------------------------------------------------------------
-    // CITAS
-    // ----------------------------------------------------------------
-
     public ObservableList<Citas> obtenerCitas() {
         ObservableList<Citas> lista = FXCollections.observableArrayList();
         String query = "SELECT id_cita, id_paciente, id_doctor, paciente, doctor, " +

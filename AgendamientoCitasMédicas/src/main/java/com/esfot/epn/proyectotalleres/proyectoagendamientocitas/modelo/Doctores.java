@@ -1,9 +1,4 @@
 package com.esfot.epn.proyectotalleres.proyectoagendamientocitas.modelo;
-
-/**
- * Clase que representa un Doctor en el sistema de agendamiento.
- * Incluye setters para permitir modificaciones desde el controlador.
- */
 public class Doctores {
     private int    id;
     private String nombre;

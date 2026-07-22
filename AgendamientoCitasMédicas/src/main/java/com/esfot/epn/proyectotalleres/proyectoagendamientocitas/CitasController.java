@@ -14,16 +14,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ResourceBundle;
 
-/**
- * Controlador para el formulario de Gestión de Citas Médicas (citas.fxml).
- *
- * CORRECCIONES PRINCIPALES:
- *  - Usa CitasDAO para persistir en BD (ya no trabaja solo en memoria)
- *  - Paciente y Médico ahora son ComboBox con datos reales de BD
- *  - El ID se obtiene de la fila seleccionada en la tabla (no como TextField)
- *  - Validación de conflictos de horario a nivel de BD (constraints UNIQUE)
- *  - La fecha se formatea como yyyy-MM-dd para MySQL
- */
 public class CitasController implements Initializable {
 
     // Formulario
@@ -49,10 +39,6 @@ public class CitasController implements Initializable {
     private final DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private final DateTimeFormatter formatoHora  = DateTimeFormatter.ofPattern("HH:mm");
 
-    // ----------------------------------------------------------------
-    // INICIALIZACIÓN
-    // ----------------------------------------------------------------
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         tablaCitas.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
@@ -74,14 +60,9 @@ public class CitasController implements Initializable {
                 }
             }
         });
-
-        // Cargar pacientes y doctores activos desde BD
         cargarCombosPacientesMedicos();
-
-        // Configurar cómo se muestra cada ítem en los ComboBox
         configurarComboBoxDisplay();
 
-        // Configurar columnas de la tabla
         colId.setCellValueFactory      (new PropertyValueFactory<>("id"));
         colPaciente.setCellValueFactory(new PropertyValueFactory<>("paciente"));
         colMedico.setCellValueFactory  (new PropertyValueFactory<>("doctor"));
@@ -94,8 +75,6 @@ public class CitasController implements Initializable {
         txtId.setDisable(true);
 
         cargarCitas();
-
-        // Al seleccionar una cita de la tabla, rellena el formulario parcialmente
         tablaCitas.getSelectionModel().selectedItemProperty().addListener(
                 (obs, oldVal, cita) -> {
                     if (cita != null) {
@@ -115,16 +94,9 @@ public class CitasController implements Initializable {
                 }
         );
     }
-
-    // ----------------------------------------------------------------
-    // CARGAR DATOS
-    // ----------------------------------------------------------------
-
     private void cargarCombosPacientesMedicos() {
         ObservableList<Pacientes> pacientes = citasDAO.obtenerPacientesActivos();
         ObservableList<Doctores>  doctores  = citasDAO.obtenerDoctoresActivos();
-
-        // Datos mock si la BD no está disponible
         if (pacientes.isEmpty()) {
             pacientes = FXCollections.observableArrayList(
                     new Pacientes(1, "1723456789", "Juan",   "Pérez",    "", "", "", "Activo"),
@@ -147,7 +119,6 @@ public class CitasController implements Initializable {
     }
 
     private void configurarComboBoxDisplay() {
-        // Mostrar "Apellido, Nombre (Cédula)" en el ComboBox de pacientes
         comboPaciente.setCellFactory(lv -> new ListCell<>() {
             @Override
             protected void updateItem(Pacientes p, boolean empty) {
@@ -164,8 +135,6 @@ public class CitasController implements Initializable {
                         p.getApellido() + ", " + p.getNombre());
             }
         });
-
-        // Mostrar "Apellido, Nombre – Especialidad" en el ComboBox de médicos
         comboMedico.setCellFactory(lv -> new ListCell<>() {
             @Override
             protected void updateItem(Doctores d, boolean empty) {
@@ -187,7 +156,6 @@ public class CitasController implements Initializable {
     private void cargarCitas() {
         ObservableList<Citas> lista = citasDAO.obtenerListaCitas();
         if (lista.isEmpty()) {
-            // Datos mock si la BD no está disponible
             lista = FXCollections.observableArrayList(
                     new Citas(1, "Juan Pérez",    "Fernando Ríos",  "2026-07-25", "09:00", "Chequeo general de cardiología",   "Pendiente"),
                     new Citas(2, "María Gómez",   "Elena Salazar",  "2026-07-25", "10:30", "Consulta pediátrica de control",   "Completada"),
@@ -197,10 +165,6 @@ public class CitasController implements Initializable {
         }
         tablaCitas.setItems(lista);
     }
-
-    // ----------------------------------------------------------------
-    // CRUD
-    // ----------------------------------------------------------------
 
     @FXML
     private void handleInsertar() {
@@ -218,8 +182,6 @@ public class CitasController implements Initializable {
             mostrarAlerta("La hora debe tener el formato HH:MM (ej. 09:30).");
             return;
         }
-
-        // Verificar conflictos a nivel de BD
         if (citasDAO.existeConflictoMedico(medico.getId(), fechaStr, horaStr, -1)) {
             mostrarAlerta("El médico " + medico.getNombre() + " " + medico.getApellido() +
                           " ya tiene una cita en esa fecha y hora.");
@@ -231,7 +193,6 @@ public class CitasController implements Initializable {
             return;
         }
 
-        // Estado "Pendiente" = id_estado 1 (según el INSERT del script SQL)
         int idEstado = mapearEstadoAId(comboEstado.getValue());
 
         if (citasDAO.registrarCita(paciente.getId(), medico.getId(), fechaStr, horaStr,
@@ -251,8 +212,6 @@ public class CitasController implements Initializable {
             mostrarAlerta("Seleccione una cita de la tabla para modificar su estado.");
             return;
         }
-
-        // Desde la tabla se puede actualizar el estado de la cita
         boolean actualizado = citasDAO.actualizarEstadoCita(
                 citaSeleccionada.getId(),
                 comboEstado.getValue()
@@ -310,11 +269,6 @@ public class CitasController implements Initializable {
             return;
         }
     }
-
-    // ----------------------------------------------------------------
-    // AUXILIARES
-    // ----------------------------------------------------------------
-
     private void limpiarCampos() {
         txtId.clear();
         comboPaciente.getSelectionModel().clearSelection();
@@ -326,7 +280,6 @@ public class CitasController implements Initializable {
         tablaCitas.getSelectionModel().clearSelection();
     }
 
-    /** Normaliza la hora a formato HH:mm; retorna null si el formato es inválido */
     private String normalizarHora(String horaTexto) {
         try {
             String[] partes = horaTexto.trim().split(":");
@@ -340,7 +293,6 @@ public class CitasController implements Initializable {
         }
     }
 
-    /** Mapea el nombre del estado a su id en la tabla ESTADOS */
     private int mapearEstadoAId(String nombreEstado) {
         return switch (nombreEstado) {
             case "Pendiente"  -> 1;

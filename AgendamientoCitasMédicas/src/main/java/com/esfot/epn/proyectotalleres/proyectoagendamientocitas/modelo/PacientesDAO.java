@@ -6,23 +6,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-/**
- * DAO completo de Pacientes: Insertar, Actualizar, Eliminar y Listar.
- * Todas las operaciones se hacen contra la BD MySQL CITAS_MEDICAS.
- *
- * Fase 2 - Bloque 1: Integración con ConexionMySQL. 
- * Implementación de borrado lógico en lugar de DELETE físico (H-8).
- */
 public class PacientesDAO {
-
-    // ----------------------------------------------------------------
-    // INSERTAR
-    // ----------------------------------------------------------------
-
     /**
      * Registra un nuevo paciente en la BD.
-     * @return el ID autogenerado si se insertó al menos una fila; -1 en caso de error.
      */
     public int registrarPaciente(Pacientes paciente) {
         String query = "INSERT INTO PACIENTES (cedula, nombre, apellido, telefono, correo, direccion, estado) " +
@@ -54,11 +40,6 @@ public class PacientesDAO {
         }
         return -1;
     }
-
-    // ----------------------------------------------------------------
-    // ACTUALIZAR
-    // ----------------------------------------------------------------
-
     /**
      * Actualiza los datos de un paciente existente identificado por id_paciente.
      */
@@ -88,13 +69,9 @@ public class PacientesDAO {
         }
     }
 
-    // ----------------------------------------------------------------
-    // ELIMINAR (BORRADO LÓGICO)
-    // ----------------------------------------------------------------
-
+  
     /**
-     * Elimina lógicamente a un paciente cambiando su estado a 'Inactivo' (H-8).
-     * Evita romper la trazabilidad de citas médicas y el error de FK RESTRICT.
+     * Elimina lógicamente a un paciente 
      */
     public boolean eliminarPaciente(int id) {
         String query = "UPDATE PACIENTES SET estado = 'Inactivo' WHERE id_paciente = ?";
@@ -111,10 +88,6 @@ public class PacientesDAO {
             return false;
         }
     }
-
-    // ----------------------------------------------------------------
-    // LISTAR
-    // ----------------------------------------------------------------
 
     /**
      * Retorna todos los pacientes ordenados por apellido y nombre.

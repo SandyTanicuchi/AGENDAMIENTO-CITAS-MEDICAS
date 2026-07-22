@@ -6,10 +6,7 @@ import com.esfot.epn.proyectotalleres.proyectoagendamientocitas.modelo.Sesion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-/**
- * Capa de Servicios para Pacientes.
- * Aplica validaciones de seguridad basadas en el rol.
- */
+/**validaciones de seguridad basadas en el rol*/
 public class PacientesService {
 
     private final PacientesDAO pacientesDAO;
@@ -17,10 +14,6 @@ public class PacientesService {
     public PacientesService() {
         this.pacientesDAO = new PacientesDAO();
     }
-
-    /**
-     * Retorna la lista de pacientes, con reglas de visibilidad según el rol.
-     */
     public ObservableList<Pacientes> obtenerPacientesPermitidos() {
         if (Sesion.esAdministrador() || Sesion.esMedico()) {
             return pacientesDAO.obtenerListaPacientes();

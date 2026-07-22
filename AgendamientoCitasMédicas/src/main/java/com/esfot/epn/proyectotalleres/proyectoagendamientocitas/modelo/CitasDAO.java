@@ -3,31 +3,8 @@ package com.esfot.epn.proyectotalleres.proyectoagendamientocitas.modelo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.sql.*;
-
-/**
- * DAO completo de Citas: Insertar, Actualizar Estado, Eliminar y Listar.
- * Maneja la tabla CITAS con sus FKs a PACIENTES, DOCTORES y ESTADOS.
- *
- * Fase 2 - Bloque 1: Se actualiza para usar ConexionMySQL, se implementa 
- * borrado lógico (estado Cancelada) y se consulta mediante VW_CITAS_COMPLETAS.
- */
 public class CitasDAO {
 
-    // ----------------------------------------------------------------
-    // INSERTAR
-    // ----------------------------------------------------------------
-
-    /**
-     * Inserta una nueva cita en la BD.
-     *
-     * @param idPaciente ID del paciente (de la tabla PACIENTES)
-     * @param idDoctor   ID del doctor   (de la tabla DOCTORES)
-     * @param fecha      Fecha en formato yyyy-MM-dd
-     * @param hora       Hora  en formato HH:mm
-     * @param motivo     Descripción/motivo de la cita
-     * @param idEstado   ID del estado   (de la tabla ESTADOS; 1=Pendiente)
-     * @return true si se insertó correctamente
-     */
     public boolean registrarCita(int idPaciente, int idDoctor,
                                   String fecha, String hora,
                                   String motivo, int idEstado) {
@@ -55,18 +32,6 @@ public class CitasDAO {
             return false;
         }
     }
-
-    // ----------------------------------------------------------------
-    // ACTUALIZAR ESTADO (Y NOTAS)
-    // ----------------------------------------------------------------
-
-    /**
-     * Actualiza el estado de una cita médica.
-     *
-     * @param idCita      ID de la cita a actualizar
-     * @param nombreEstado Nombre del estado (ej. Pendiente, Confirmada, Cancelada, En_Atencion, Completada)
-     * @return true si se actualizó correctamente
-     */
     public boolean actualizarEstadoCita(int idCita, String nombreEstado) {
         String query = "UPDATE CITAS c " +
                        "JOIN ESTADOS e ON e.nombre_estado = ? " +
@@ -88,9 +53,6 @@ public class CitasDAO {
         }
     }
 
-    /**
-     * Actualiza las notas médicas (diagnóstico) de una cita.
-     */
     public boolean actualizarNotasMedicas(int idCita, String notasMedicas) {
         String query = "UPDATE CITAS SET notas_medicas = ? WHERE id_cita = ?";
         try (Connection conn = ConexionMySQL.conectar()) {
@@ -106,26 +68,9 @@ public class CitasDAO {
         }
     }
 
-    // ----------------------------------------------------------------
-    // ELIMINAR / CANCELAR
-    // ----------------------------------------------------------------
-
-    /**
-     * Elimina lógicamente una cita (H-8).
-     * En lugar de borrar físicamente la fila, se actualiza el estado a "Cancelada".
-     * Conserva la trazabilidad clínica en la BD.
-     */
     public boolean eliminarCita(int idCita) {
         return actualizarEstadoCita(idCita, EstadoCita.CANCELADA.getNombreEnBD());
     }
-
-    // ----------------------------------------------------------------
-    // LISTAR (usando la vista)
-    // ----------------------------------------------------------------
-
-    /**
-     * Retorna todas las citas consultando la vista VW_CITAS_COMPLETAS.
-     */
     public ObservableList<Citas> obtenerListaCitas() {
         ObservableList<Citas> lista = FXCollections.observableArrayList();
         String query = "SELECT id_cita, id_paciente, id_doctor, paciente, doctor, " +
@@ -162,11 +107,6 @@ public class CitasDAO {
         return lista;
     }
 
-    // ----------------------------------------------------------------
-    // AUXILIARES: obtener listas de IDs para los ComboBox
-    // ----------------------------------------------------------------
-
-    /** Retorna la lista de pacientes (id, nombre completo) para ComboBox */
     public ObservableList<Pacientes> obtenerPacientesActivos() {
         ObservableList<Pacientes> lista = FXCollections.observableArrayList();
         String query = "SELECT id_paciente, cedula, nombre, apellido, telefono, correo, direccion, estado " +
@@ -197,7 +137,6 @@ public class CitasDAO {
         return lista;
     }
 
-    /** Retorna la lista de doctores activos para ComboBox */
     public ObservableList<Doctores> obtenerDoctoresActivos() {
         ObservableList<Doctores> lista = FXCollections.observableArrayList();
         String query = "SELECT id_doctor, nombre, apellido, especialidad, telefono, correo, estado " +
@@ -227,10 +166,6 @@ public class CitasDAO {
         return lista;
     }
 
-    /**
-     * Verifica si ya existe una cita para un médico en esa fecha/hora,
-     * excluyendo opcionalmente una cita por su ID (útil al modificar).
-     */
     public boolean existeConflictoMedico(int idDoctor, String fecha, String hora, int idCitaExcluir) {
         // Un médico puede tener citas en estado Cancelada a esa hora, esas no generan conflicto
         String query = "SELECT COUNT(*) FROM VW_CITAS_COMPLETAS " +

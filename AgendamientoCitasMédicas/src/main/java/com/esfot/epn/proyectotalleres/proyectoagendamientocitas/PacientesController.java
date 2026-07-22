@@ -9,20 +9,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-/**
- * Controlador para la vista de Gestión de Pacientes (pacientes.fxml).
- *
- * CORRECCIONES:
- *  - Movido al paquete principal (no al sub-paquete modelo)
- *  - Se eliminó el uso del 8° argumento en el constructor incorrecto
- *  - Se agregan importaciones correctas al modelo
- *  - Se añade validación de campos antes de guardar/modificar
- *  - Se muestra alerta de confirmación antes de eliminar
- */
 public class PacientesController implements Initializable {
-
-    // Campos del formulario
     @FXML private TextField        txtId;
     @FXML private TextField        txtCedula;
     @FXML private TextField        txtNombre;
@@ -44,17 +31,11 @@ public class PacientesController implements Initializable {
     @FXML private TableColumn<Pacientes, String>  colEstado;
 
     private final PacientesDAO dao = new PacientesDAO();
-
-    // ----------------------------------------------------------------
-    // INICIALIZACIÓN
-    // ----------------------------------------------------------------
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cmbEstado.getItems().addAll("Activo", "Inactivo");
         cmbEstado.getSelectionModel().selectFirst();
 
-        // Configurar columnas de la tabla
         colId.setCellValueFactory      (new PropertyValueFactory<>("id"));
         colCedula.setCellValueFactory  (new PropertyValueFactory<>("cedula"));
         colNombre.setCellValueFactory  (new PropertyValueFactory<>("nombre"));
@@ -67,8 +48,7 @@ public class PacientesController implements Initializable {
         txtId.setEditable(false);
 
         cargarPacientes();
-
-        // Al seleccionar una fila, rellenar el formulario
+        
         tablePacientes.getSelectionModel().selectedItemProperty().addListener(
                 (obs, oldVal, paciente) -> {
                     if (paciente != null) {
@@ -84,19 +64,9 @@ public class PacientesController implements Initializable {
                 }
         );
     }
-
-    // ----------------------------------------------------------------
-    // CARGAR TABLA
-    // ----------------------------------------------------------------
-
     private void cargarPacientes() {
         tablePacientes.setItems(dao.obtenerListaPacientes());
     }
-
-    // ----------------------------------------------------------------
-    // CRUD
-    // ----------------------------------------------------------------
-
     @FXML
     private void guardarPaciente() {
         if (!validarCamposObligatorios()) return;
@@ -146,8 +116,6 @@ public class PacientesController implements Initializable {
             mostrarError("Seleccione un paciente de la tabla para eliminar.");
             return;
         }
-
-        // Confirmación antes de eliminar
         Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
         confirm.setTitle("Confirmar eliminación");
         confirm.setHeaderText("¿Eliminar al paciente " + paciente.getNombre() + " " + paciente.getApellido() + "?");
@@ -177,10 +145,6 @@ public class PacientesController implements Initializable {
         cmbEstado.getSelectionModel().selectFirst();
         tablePacientes.getSelectionModel().clearSelection();
     }
-
-    // ----------------------------------------------------------------
-    // AUXILIARES
-    // ----------------------------------------------------------------
 
     /** Construye un objeto Pacientes con los datos del formulario */
     private Pacientes construirPacienteDesdeFormulario(int id) {

@@ -3,9 +3,9 @@ CitaMed es un aplicacion de escritorio interactiva e intuitiva que te permite ad
 ---
 
 ## Características
-- **Administra citas**: Registra, edita, elimina, crea y valida horarios.
-- **Gestiona Doctores y Pacientes**: Registra, edita, elimina y crea.
-- **Ingresa sesion**: 
+- **Administra citas**: registra, edita, elimina, crea y valida horarios.
+- **Gestiona Doctores y Pacientes**: registra, edita, elimina y crea.
+- **Ingresa sesion**: con tus credenciales.
 
 ---
 

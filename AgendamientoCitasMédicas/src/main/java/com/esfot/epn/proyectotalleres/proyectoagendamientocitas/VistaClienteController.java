@@ -33,14 +33,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-/**
- * Controlador de la vista principal para los usuarios con rol Cliente.
- *
- * CORRECCIÓN: Si idEntidadVinculada es 0 (usuario sin id_paciente vinculado
- * en USUARIOS), se intenta recuperar el id_paciente consultando la BD
- * por nombre de usuario. Esto evita el mensaje "complete su perfil"
- * cuando el dato simplemente no estaba en la sesión.
- */
 public class VistaClienteController implements Initializable {
 
     @FXML private Label lblBienvenida;
@@ -65,29 +57,25 @@ public class VistaClienteController implements Initializable {
     private final UsuarioService  usuarioService  = new UsuarioService();
     private final PacientesService pacientesService = new PacientesService();
 
-    /** ID del paciente resuelto (puede venir de Sesion o recuperarse de la BD). */
     private int idPacienteResuelto = 0;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         lblBienvenida.setText("Hola, " + Sesion.getNombreUsuario());
-
-        // Inicializar tabla
+        
         colDoctor.setCellValueFactory(new PropertyValueFactory<>("doctor"));
         colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         colHora.setCellValueFactory(new PropertyValueFactory<>("hora"));
         colMotivo.setCellValueFactory(new PropertyValueFactory<>("motivo"));
         colEstado.setCellValueFactory(new PropertyValueFactory<>("estadoCita"));
 
-        // Intentar resolver el idPaciente
+        // Resuelve el idPaciente
         idPacienteResuelto = Sesion.getIdEntidadVinculada();
 
         if (idPacienteResuelto <= 0) {
-            // Fallback: consultar directamente la BD con el nombre de usuario de la sesión
             idPacienteResuelto = recuperarIdPacienteDesdeDB(Sesion.getIdUsuario());
 
             if (idPacienteResuelto > 0) {
-                // Actualizar el Singleton para que CitasService también lo use
                 Sesion.iniciarSesion(
                         Sesion.getNombreUsuario(),
                         Sesion.getRol(),
@@ -105,11 +93,6 @@ public class VistaClienteController implements Initializable {
             cargarFormulario();
         }
     }
-
-    /**
-     * Muestra un Dialog modal para crear el perfil de paciente
-     * y vincularlo al usuario actual en caso de que no lo tenga.
-     */
     private void solicitarPerfilCliente() {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle("Completar Perfil");
@@ -191,12 +174,6 @@ public class VistaClienteController implements Initializable {
 
         dialog.showAndWait();
     }
-
-    /**
-     * Consulta la columna id_paciente de USUARIOS para el id_usuario dado.
-     * Resuelve el caso en que la sesión se inicializó con idEntidadVinculada = 0
-     * por algún problema de carga anterior.
-     */
     private int recuperarIdPacienteDesdeDB(int idUsuario) {
         String query = "SELECT id_paciente FROM USUARIOS WHERE id_usuario = ? AND id_paciente IS NOT NULL";
         try (Connection conn = ConexionMySQL.conectar()) {
@@ -221,7 +198,6 @@ public class VistaClienteController implements Initializable {
     }
 
     private void cargarFormulario() {
-        // Cargar combobox doctores (solo Activos)
         ObservableList<Doctores> listaDocs = doctoresService.obtenerDoctoresActivos();
         comboDoctor.setItems(listaDocs);
         comboDoctor.setConverter(new StringConverter<Doctores>() {

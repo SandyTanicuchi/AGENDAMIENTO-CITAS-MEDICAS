@@ -9,13 +9,6 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-/**
- * Controlador del formulario de registro de nuevos usuarios.
- *
- * Fase 2 - Bloque 2: Integración con UsuarioService y restricción de seguridad 
- * (no se permite crear roles de Administrador desde el registro público).
- */
 public class RegistroController implements Initializable {
 
     @FXML private TextField     txtNombre;
@@ -25,7 +18,6 @@ public class RegistroController implements Initializable {
     @FXML private PasswordField txtConfirmarPassword;
     @FXML private Label         lblError;
 
-    // Se delega a la capa de servicio
     private final UsuarioService usuarioService = new UsuarioService();
 
     @Override
@@ -38,10 +30,6 @@ public class RegistroController implements Initializable {
         comboRol.getSelectionModel().select("Cliente"); // Valor por defecto más común
     }
 
-    // ----------------------------------------------------------------
-    // ACCIÓN: Registrar usuario
-    // ----------------------------------------------------------------
-
     @FXML
     private void handleRegistrar() {
         String nombre            = txtNombre.getText().trim();
@@ -50,7 +38,6 @@ public class RegistroController implements Initializable {
         String password          = txtPassword.getText();
         String confirmarPassword = txtConfirmarPassword.getText();
 
-        // --- Validaciones de campos vacíos ---
         if (nombre.isEmpty() || rol == null || usuario.isEmpty()
                 || password.isEmpty() || confirmarPassword.isEmpty()) {
             mostrarError("Por favor complete todos los campos.");
@@ -90,20 +77,10 @@ public class RegistroController implements Initializable {
             mostrarError("No se pudo crear la cuenta. El nombre de usuario ya existe o permisos insuficientes.");
         }
     }
-
-    // ----------------------------------------------------------------
-    // ACCIÓN: Cancelar
-    // ----------------------------------------------------------------
-
     @FXML
     private void handleCancelar() {
         cerrarVentana();
     }
-
-    // ----------------------------------------------------------------
-    // AUXILIARES
-    // ----------------------------------------------------------------
-
     private void cerrarVentana() {
         Stage stage = (Stage) txtUsuario.getScene().getWindow();
         stage.close();

@@ -1,5 +1,5 @@
-# CitaMed
-CitaMed es un aplicacion de escritorio interactiva e intuitiva que te permite adminitrar tu clinica.
+# VitalSched
+VitalSched es un aplicacion de escritorio interactiva e intuitiva que te permite adminitrar tu clinica.
 ---
 
 ## Características
@@ -9,16 +9,26 @@ CitaMed es un aplicacion de escritorio interactiva e intuitiva que te permite ad
 
 ---
 
-## Arquitectura: MVC
+## Arquitectura: MVC con DAO y servicio
+Src
+  |--java
+  |  |--AgendamientoCitasMédicas/src/main/java/com/esfot/epn/proyectotalleres
+  |    	|--modelo
+  |    	|--servicio
+  |--resources
+  
 - **Vista**:
 
-![img.png](imagenes/img.png)
+![img.png](imagenes/Vista.png)
 - **Controlador**:
 
-![img_1.png](imagenes/img_1.png)
+![img_1.png](imagenes/Controlador.png)
 - **Modelo**:
 
-![img_2.png](imagenes/img_2.png)
+![img_2.png](imagenes/Modelo.png)
+- **Servicio**:
+
+![img_2.png](imagenes/Servicio.png)
 
 ---
 ## Clases principales
@@ -49,11 +59,15 @@ CitaMed es un aplicacion de escritorio interactiva e intuitiva que te permite ad
 ## Interfaz Grafica
 - **Login**
 
-- **Registro**
+![alt text](imagenes/Login.png)
 
-- **Dashboard**
+- **Agendamiento de citas**
 
-- **Citas**
+![alt text](imagenes/Agendamiento.png)
+
+- **Historial de citas**
+
+![alt text](imagenes/Historial.png)
 
 ---
 
@@ -73,3 +87,10 @@ CitaMed es un aplicacion de escritorio interactiva e intuitiva que te permite ad
 
 ## Licencia
 Proyecto académico — EPN (Escuela Politécnica Nacional)
+
+---
+##Desarrolladores
+- **Emilio Gavilánez**
+- **Claudia Coello**
+- **Dennes Molina**
+- **Sandy Tanicuchi**

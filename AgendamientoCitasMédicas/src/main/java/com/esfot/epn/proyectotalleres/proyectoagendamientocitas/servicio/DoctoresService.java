@@ -5,10 +5,6 @@ import com.esfot.epn.proyectotalleres.proyectoagendamientocitas.modelo.DoctoresD
 import com.esfot.epn.proyectotalleres.proyectoagendamientocitas.modelo.Sesion;
 import javafx.collections.ObservableList;
 
-/**
- * Capa de Servicios para Doctores.
- * Aplica validaciones de seguridad basadas en el rol.
- */
 public class DoctoresService {
 
     private final DoctoresDAO doctoresDAO;
@@ -17,16 +13,9 @@ public class DoctoresService {
         this.doctoresDAO = new DoctoresDAO();
     }
 
-    /**
-     * Retorna la lista de doctores (Todos, para uso de Admin).
-     */
     public ObservableList<Doctores> obtenerListaDoctores() {
         return doctoresDAO.obtenerListaDoctores();
     }
-
-    /**
-     * Retorna solo los doctores activos (Para que los clientes agenden citas).
-     */
     public ObservableList<Doctores> obtenerDoctoresActivos() {
         return doctoresDAO.obtenerDoctoresActivos();
     }

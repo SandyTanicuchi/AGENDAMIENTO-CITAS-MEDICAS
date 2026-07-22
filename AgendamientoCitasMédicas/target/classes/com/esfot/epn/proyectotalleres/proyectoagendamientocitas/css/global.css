@@ -1,0 +1,585 @@
+/* =====================================================================
+   global.css — VitalSched Medical System
+   Design System: Material Design 3 + Microsoft Fluent + Medical UI
+   Paleta Principal: #1976D2 (azul) | #43A047 (verde) | #E53935 (rojo)
+   Autor: VitalSched Design Team | Versión: 2.0 PRO
+   ===================================================================== */
+
+/* ─────────────────────────────────────────────────────────
+   BASE Y TIPOGRAFÍA
+   ───────────────────────────────────────────────────────── */
+.root {
+    -fx-font-family: "Segoe UI", "Inter", "Roboto", Arial, sans-serif;
+    -fx-background-color: #F5F7FA;
+    -fx-font-size: 14px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   TIPOGRAFÍA — JERARQUÍA VISUAL
+   ───────────────────────────────────────────────────────── */
+.title-text {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1976D2;
+}
+
+.subtitle-text {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #263238;
+}
+
+.body-text {
+    -fx-font-size: 13px;
+    -fx-text-fill: #607D8B;
+}
+
+.form-label {
+    -fx-text-fill: #546E7A;
+    -fx-font-weight: 600;
+    -fx-font-size: 13px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   CARDS Y PANELES
+   ───────────────────────────────────────────────────────── */
+.card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    -fx-border-color: #E8EAED;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.07), 12, 0, 0, 4);
+    -fx-padding: 22px;
+}
+
+.card:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(25,118,210,0.12), 16, 0, 0, 6);
+}
+
+.card-title {
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #607D8B;
+}
+
+/* ─────────────────────────────────────────────────────────
+   SIDEBAR Y MENÚ LATERAL
+   ───────────────────────────────────────────────────────── */
+.sidebar {
+    -fx-background-color: #FFFFFF;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 10, 0, 2, 0);
+    -fx-padding: 20px 10px;
+}
+
+.sidebar-button, .menu-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #546E7A;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 11px 18px;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-pref-width: 10000px;
+    -fx-border-color: transparent;
+}
+
+.sidebar-button:hover, .menu-button:hover {
+    -fx-background-color: #E3F2FD;
+    -fx-text-fill: #1976D2;
+}
+
+.sidebar-button-active, .menu-button:pressed {
+    -fx-background-color: #1976D2;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* ─────────────────────────────────────────────────────────
+   HEADER / BARRA SUPERIOR
+   ───────────────────────────────────────────────────────── */
+.top-header, .header {
+    -fx-background-color: linear-gradient(to right, #1565C0, #1976D2);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 6, 0, 0, 3);
+    -fx-padding: 14px 25px;
+    -fx-border-width: 0;
+}
+
+/* Header con gradiente (dashboard) */
+.header-gradient {
+    -fx-background-color: linear-gradient(to right, #1565C0, #1976D2, #42A5F5);
+    -fx-padding: 14px 25px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 3);
+}
+
+.header-title {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.header-subtitle {
+    -fx-text-fill: #BBDEFB;
+    -fx-font-size: 11px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   BOTONES — SISTEMA COMPLETO
+   ───────────────────────────────────────────────────────── */
+.button {
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.10), 5, 0, 0, 2);
+}
+
+/* Azul — Primario / Buscar */
+.btn-primary, .action-button {
+    -fx-background-color: #1976D2;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-effect: dropshadow(three-pass-box, rgba(25,118,210,0.3), 6, 0, 0, 2);
+}
+.btn-primary:hover, .action-button:hover {
+    -fx-background-color: #1565C0;
+    -fx-effect: dropshadow(three-pass-box, rgba(25,118,210,0.45), 10, 0, 0, 4);
+}
+.btn-primary:pressed, .action-button:pressed {
+    -fx-background-color: #0D47A1;
+}
+
+/* Verde — Guardar / Éxito */
+.btn-success, .action-button-success {
+    -fx-background-color: #43A047;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-effect: dropshadow(three-pass-box, rgba(67,160,71,0.3), 6, 0, 0, 2);
+}
+.btn-success:hover, .action-button-success:hover {
+    -fx-background-color: #388E3C;
+    -fx-effect: dropshadow(three-pass-box, rgba(67,160,71,0.45), 10, 0, 0, 4);
+}
+.btn-success:pressed, .action-button-success:pressed {
+    -fx-background-color: #2E7D32;
+}
+
+/* Rojo — Eliminar / Peligro */
+.btn-danger, .action-button-danger {
+    -fx-background-color: #E53935;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-effect: dropshadow(three-pass-box, rgba(229,57,53,0.3), 6, 0, 0, 2);
+}
+.btn-danger:hover, .action-button-danger:hover {
+    -fx-background-color: #D32F2F;
+    -fx-effect: dropshadow(three-pass-box, rgba(229,57,53,0.45), 10, 0, 0, 4);
+}
+.btn-danger:pressed, .action-button-danger:pressed {
+    -fx-background-color: #C62828;
+}
+
+/* Naranja — Modificar / Advertencia */
+.btn-warning, .action-button-warning {
+    -fx-background-color: #FB8C00;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-effect: dropshadow(three-pass-box, rgba(251,140,0,0.3), 6, 0, 0, 2);
+}
+.btn-warning:hover, .action-button-warning:hover {
+    -fx-background-color: #F57C00;
+    -fx-effect: dropshadow(three-pass-box, rgba(251,140,0,0.45), 10, 0, 0, 4);
+}
+.btn-warning:pressed, .action-button-warning:pressed {
+    -fx-background-color: #EF6C00;
+}
+
+/* Gris — Cancelar / Secundario */
+.btn-secondary, .action-button-secondary {
+    -fx-background-color: #F5F7FA;
+    -fx-text-fill: #546E7A;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #B0BEC5;
+    -fx-border-width: 1px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+.btn-secondary:hover, .action-button-secondary:hover {
+    -fx-background-color: #ECEFF1;
+    -fx-border-color: #90A4AE;
+}
+.btn-secondary:pressed, .action-button-secondary:pressed {
+    -fx-background-color: #CFD8DC;
+}
+
+/* ─────────────────────────────────────────────────────────
+   TEXTFIELDS Y CONTROLES DE FORMULARIO
+   ───────────────────────────────────────────────────────── */
+.text-field,
+.password-field,
+.combo-box,
+.date-picker,
+.text-area {
+    -fx-background-color: #FAFBFC;
+    -fx-border-color: #CFD8DC;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 9px 13px;
+    -fx-font-size: 13px;
+    -fx-text-fill: #263238;
+    -fx-pref-height: 38px;
+}
+
+.text-field:focused,
+.password-field:focused,
+.combo-box:focused,
+.date-picker:focused {
+    -fx-border-color: #1976D2;
+    -fx-border-width: 2px;
+    -fx-background-color: #FFFFFF;
+    -fx-effect: dropshadow(three-pass-box, rgba(25,118,210,0.15), 6, 0, 0, 0);
+}
+
+.text-area {
+    -fx-pref-height: 70px;
+}
+
+.text-area:focused {
+    -fx-border-color: #1976D2;
+    -fx-border-width: 2px;
+    -fx-background-color: #FFFFFF;
+}
+
+.text-area .content {
+    -fx-background-color: #FAFBFC;
+    -fx-background-radius: 8px;
+}
+
+.text-area:focused .content {
+    -fx-background-color: #FFFFFF;
+}
+
+/* ComboBox específico */
+.combo-box .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #263238;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #42A5F5;
+    -fx-border-radius: 6px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 4);
+}
+
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: #E3F2FD;
+    -fx-text-fill: #1976D2;
+}
+
+/* ─────────────────────────────────────────────────────────
+   TABLEVIEW — DISEÑO MODERNO
+   ───────────────────────────────────────────────────────── */
+.table-view {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E3F2FD;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.04), 6, 0, 0, 2);
+}
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to right, #1565C0, #1976D2);
+    -fx-background-radius: 10px 10px 0 0;
+}
+
+.table-view .column-header,
+.table-view .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 12px 10px;
+}
+
+.table-row-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: transparent transparent #F1F5F9 transparent;
+    -fx-cell-size: 44px;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #F8FAFC;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #EFF6FF;
+    -fx-cursor: hand;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #DBEAFE;
+}
+
+.table-row-cell:selected .text {
+    -fx-fill: #1E40AF;
+}
+
+.table-view .placeholder .label {
+    -fx-text-fill: #9CA3AF;
+    -fx-font-size: 14px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   DASHBOARD — METRIC CARDS
+   ───────────────────────────────────────────────────────── */
+.card-metric {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    -fx-border-color: #E8EAED;
+    -fx-border-width: 1px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.07), 10, 0, 0, 4);
+}
+
+.card-metric:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(25,118,210,0.15), 14, 0, 0, 6);
+    -fx-border-color: #BBDEFB;
+}
+
+.card-value {
+    -fx-font-size: 34px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1976D2;
+}
+
+.card-icon-container {
+    -fx-background-color: #E3F2FD;
+    -fx-background-radius: 50%;
+    -fx-alignment: center;
+    -fx-padding: 14px;
+    -fx-min-width: 54px;
+    -fx-min-height: 54px;
+    -fx-max-width: 54px;
+    -fx-max-height: 54px;
+}
+
+.card-icon-container-patients {
+    -fx-background-color: #E8F5E9;
+}
+
+.card-icon-container-doctors {
+    -fx-background-color: #FCE4EC;
+}
+
+/* ─────────────────────────────────────────────────────────
+   DASHBOARD — SECCIONES Y CONTENIDO
+   ───────────────────────────────────────────────────────── */
+.content-pane {
+    -fx-padding: 25px;
+    -fx-background-color: #F5F7FA;
+}
+
+.section-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1E293B;
+}
+
+.section-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #64748B;
+}
+
+/* ─────────────────────────────────────────────────────────
+   FOOTER
+   ───────────────────────────────────────────────────────── */
+.footer {
+    -fx-background-color: #ECEFF1;
+    -fx-padding: 10px 25px;
+    -fx-alignment: center-left;
+    -fx-border-color: #CFD8DC transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+}
+
+.footer-text {
+    -fx-text-fill: #78909C;
+    -fx-font-size: 11px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   SEPARADORES
+   ───────────────────────────────────────────────────────── */
+.separator {
+    -fx-padding: 4px 0;
+}
+
+.separator .line {
+    -fx-border-color: #E3F2FD;
+    -fx-border-style: solid;
+}
+
+/* ─────────────────────────────────────────────────────────
+   HYPERLINKS
+   ───────────────────────────────────────────────────────── */
+.hyperlink {
+    -fx-text-fill: #1976D2;
+    -fx-font-weight: bold;
+    -fx-border-color: transparent;
+    -fx-underline: false;
+    -fx-cursor: hand;
+}
+
+.hyperlink:hover {
+    -fx-text-fill: #0D47A1;
+    -fx-underline: true;
+}
+
+/* ─────────────────────────────────────────────────────────
+   ETIQUETAS DE ERROR Y ESTADO
+   ───────────────────────────────────────────────────────── */
+.error-text {
+    -fx-text-fill: #E53935;
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+}
+
+.success-text {
+    -fx-text-fill: #43A047;
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+}
+
+.warning-text {
+    -fx-text-fill: #FB8C00;
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+}
+
+/* ─────────────────────────────────────────────────────────
+   SCROLL BAR — MODERNA Y MINIMALISTA
+   ───────────────────────────────────────────────────────── */
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #B0BEC5;
+    -fx-background-radius: 4px;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #78909C;
+}
+
+.scroll-bar .track {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+}
+
+/* ─────────────────────────────────────────────────────────
+   DATE-PICKER — ESTILOS DEL POPUP
+   ───────────────────────────────────────────────────────── */
+.date-picker-popup {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #42A5F5;
+    -fx-border-radius: 8px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.12), 12, 0, 0, 4);
+}
+
+.date-picker-popup .month-year-pane {
+    -fx-background-color: #1976D2;
+}
+
+.date-picker-popup .spinner .button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFFFFF;
+}
+
+.date-picker-popup .day-name-cell {
+    -fx-text-fill: #607D8B;
+    -fx-font-weight: bold;
+}
+
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: #E3F2FD;
+    -fx-background-radius: 50%;
+}
+
+.date-picker-popup .selected {
+    -fx-background-color: #1976D2;
+    -fx-background-radius: 50%;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* ─────────────────────────────────────────────────────────
+   TOOLTIP
+   ───────────────────────────────────────────────────────── */
+.tooltip {
+    -fx-background-color: #263238;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 6px;
+    -fx-font-size: 12px;
+    -fx-padding: 6px 10px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   CHECKBOX Y RADIO BUTTON
+   ───────────────────────────────────────────────────────── */
+.check-box .box {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #CFD8DC;
+    -fx-border-radius: 4px;
+    -fx-border-width: 2px;
+}
+
+.check-box:selected .box {
+    -fx-background-color: #1976D2;
+    -fx-border-color: #1976D2;
+}
+
+.check-box .mark {
+    -fx-background-color: #FFFFFF;
+}
+
+/* ─────────────────────────────────────────────────────────
+   PROGRESS INDICATOR
+   ───────────────────────────────────────────────────────── */
+.progress-indicator {
+    -fx-progress-color: #1976D2;
+}

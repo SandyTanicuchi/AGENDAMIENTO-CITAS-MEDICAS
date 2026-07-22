@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<HBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.esfot.epn.proyectotalleres.proyectoagendamientocitas.RegistroController" 
+      stylesheets="@css/global.css" prefWidth="1000.0" prefHeight="650.0">
+
+    <!-- PANEL IZQUIERDO -->
+    <VBox alignment="CENTER" prefWidth="450.0" style="-fx-background-color: #1976D2;" HBox.hgrow="NEVER">
+        <padding>
+            <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+        </padding>
+        <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/logo.png" />
+            </image>
+        </ImageView>
+        <Label text="Únete a VitalSched" textFill="WHITE" wrapText="true" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="28.0" />
+            </font>
+            <VBox.margin>
+                <Insets top="20.0" />
+            </VBox.margin>
+        </Label>
+        <Label text="Crea tu cuenta y empieza a gestionar tus citas de forma rápida y segura." textFill="#e3f2fd" wrapText="true" textAlignment="CENTER">
+            <font>
+                <Font size="15.0" />
+            </font>
+            <VBox.margin>
+                <Insets top="15.0" />
+            </VBox.margin>
+        </Label>
+    </VBox>
+
+    <!-- PANEL DERECHO (Formulario) -->
+    <VBox alignment="CENTER" HBox.hgrow="ALWAYS" style="-fx-background-color: #F5F7FA;">
+        <padding>
+            <Insets bottom="40.0" left="60.0" right="60.0" top="40.0" />
+        </padding>
+        
+        <VBox styleClass="card" maxWidth="500.0" VBox.vgrow="NEVER" spacing="15.0" alignment="CENTER_LEFT">
+            <padding>
+                <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
+            </padding>
+            
+            <VBox alignment="CENTER" spacing="5.0">
+                <Label text="Registro de Usuario" styleClass="title-text" />
+                <Label text="Complete los datos para crear una nueva cuenta" styleClass="body-text" />
+            </VBox>
+            
+            <Region prefHeight="5.0" />
+            
+            <VBox spacing="5.0">
+                <Label text="Nombre Completo" styleClass="form-label" />
+                <TextField fx:id="txtNombre" promptText="Ingrese su nombre completo" styleClass="text-field" />
+            </VBox>
+
+            <HBox spacing="15.0">
+                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                    <Label text="Rol" styleClass="form-label" />
+                    <ComboBox fx:id="comboRol" promptText="Seleccione su rol" styleClass="combo-box" maxWidth="Infinity" />
+                </VBox>
+                
+                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                    <Label text="Nombre de Usuario" styleClass="form-label" />
+                    <TextField fx:id="txtUsuario" promptText="Cree un usuario" styleClass="text-field" />
+                </VBox>
+            </HBox>
+            
+            <HBox spacing="15.0">
+                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                    <Label text="Contraseña" styleClass="form-label" />
+                    <PasswordField fx:id="txtPassword" promptText="••••••••" styleClass="password-field" />
+                </VBox>
+                
+                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                    <Label text="Confirmar Contraseña" styleClass="form-label" />
+                    <PasswordField fx:id="txtConfirmarPassword" promptText="••••••••" styleClass="password-field" />
+                </VBox>
+            </HBox>
+            
+            <Label fx:id="lblError" styleClass="error-text" visible="false" wrapText="true" />
+            
+            <Region prefHeight="5.0" />
+            
+            <HBox spacing="15.0">
+                <Button mnemonicParsing="false" onAction="#handleCancelar" text="Cancelar" styleClass="button, btn-secondary" maxWidth="Infinity" HBox.hgrow="ALWAYS" prefHeight="45.0" />
+                <Button mnemonicParsing="false" onAction="#handleRegistrar" text="Crear Cuenta" styleClass="button, btn-primary" maxWidth="Infinity" HBox.hgrow="ALWAYS" prefHeight="45.0" />
+            </HBox>
+            
+        </VBox>
+    </VBox>
+</HBox>

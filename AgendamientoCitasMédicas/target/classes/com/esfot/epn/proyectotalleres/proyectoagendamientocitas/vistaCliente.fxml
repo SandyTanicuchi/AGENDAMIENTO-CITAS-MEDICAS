@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane prefHeight="750.0" prefWidth="1050.0" stylesheets="@css/global.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esfot.epn.proyectotalleres.proyectoagendamientocitas.VistaClienteController">
+
+    <!-- â•â•â• HEADER (igual que dashboard) â•â•â• -->
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="70.0" spacing="20.0" styleClass="header" BorderPane.alignment="CENTER_LEFT">
+            <children>
+                <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                    <image><Image url="@../img/logo.png" /></image>
+                </ImageView>
+                <VBox alignment="CENTER_LEFT">
+                    <children>
+                        <Label styleClass="header-title" text="VitalSched" />
+                        <Label styleClass="header-subtitle" text="Portal del Paciente" />
+                    </children>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS" />
+                <HBox alignment="CENTER" spacing="10.0">
+                    <children>
+                        <Label fx:id="lblBienvenida" style="-fx-text-fill: #ffffff; -fx-font-weight: bold;" text="Hola, Cliente" />
+                        <Region prefWidth="10.0" />
+                        <Button mnemonicParsing="false" onAction="#handleLogout" style="-fx-background-color: #ef4444; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 6 12; -fx-font-size: 12px;" text="Cerrar Sesión">
+                            <graphic><FontIcon iconColor="white" iconLiteral="fas-sign-out-alt" iconSize="12" /></graphic>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+            <padding><Insets left="20.0" right="20.0" /></padding>
+        </HBox>
+    </top>
+
+    <!-- â•â•â• SIDEBAR IZQUIERDO â€” Agendar Cita â•â•â• -->
+    <left>
+        <VBox prefWidth="350.0" spacing="0.0" style="-fx-background-color: #ffffff; -fx-border-color: transparent #e2e8f0 transparent transparent; -fx-border-width: 0 1 0 0;" BorderPane.alignment="CENTER">
+
+            <!-- TÃ­tulo secciÃ³n -->
+            <VBox style="-fx-padding: 20px 20px 15px 20px; -fx-border-color: transparent transparent #e2e8f0 transparent; -fx-background-color: #f8fafc; -fx-border-width: 0 0 1 0;">
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <FontIcon iconColor="#3b82f6" iconLiteral="fas-calendar-plus" iconSize="18" />
+                    <Label style="-fx-text-fill: #1e293b; -fx-font-weight: bold; -fx-font-size: 16px;" text="Agendar Nueva Cita" />
+                </HBox>
+                <Label style="-fx-text-fill: #475569; -fx-font-size: 12px; -fx-padding: 4 0 0 0;" text="Seleccione doctor y horario" />
+            </VBox>
+
+            <!-- Campos del formulario -->
+            <VBox spacing="15.0" style="-fx-padding: 18px 20px;">
+
+                <VBox spacing="5.0">
+                    <Label style="-fx-text-fill: #475569; -fx-font-size: 12px; -fx-font-weight: bold;" text="Doctor / Especialista" />
+                    <ComboBox fx:id="comboDoctor" maxWidth="Infinity" promptText="Seleccione un especialista..." style="-fx-background-color: #ffffff; -fx-border-color: #cbd5e1; -fx-border-radius: 7; -fx-background-radius: 7; -fx-font-size: 13px;" />
+                </VBox>
+
+                <HBox spacing="10.0">
+                    <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                        <Label style="-fx-text-fill: #475569; -fx-font-size: 12px; -fx-font-weight: bold;" text="Fecha" />
+                        <DatePicker fx:id="dpFecha" maxWidth="Infinity" promptText="YYYY-MM-DD" style="-fx-background-color: #ffffff; -fx-border-color: #cbd5e1; -fx-border-radius: 7; -fx-background-radius: 7; -fx-font-size: 13px;" />
+                    </VBox>
+                    <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                        <Label style="-fx-text-fill: #475569; -fx-font-size: 12px; -fx-font-weight: bold;" text="Hora" />
+                        <ComboBox fx:id="comboHora" maxWidth="Infinity" promptText="HH:MM" style="-fx-background-color: #ffffff; -fx-border-color: #cbd5e1; -fx-border-radius: 7; -fx-background-radius: 7; -fx-font-size: 13px;" />
+                    </VBox>
+                </HBox>
+
+                <VBox spacing="5.0">
+                    <Label style="-fx-text-fill: #475569; -fx-font-size: 12px; -fx-font-weight: bold;" text="Motivo de la Cita" />
+                    <TextArea fx:id="txtMotivo" prefHeight="90.0" promptText="Describa brevemente sus sÃ­ntomas..." style="-fx-background-color: #ffffff; -fx-border-color: #cbd5e1; -fx-border-radius: 7; -fx-background-radius: 7; -fx-font-size: 13px;" wrapText="true" />
+                </VBox>
+
+                <!-- Mensaje de estado -->
+                <Label fx:id="lblMensaje" minHeight="30.0" style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #f87171;" wrapText="true" />
+
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS" />
+
+            <!-- Botones de acciÃ³n -->
+            <VBox spacing="8.0" style="-fx-padding: 15px 20px 20px 20px; -fx-border-color: #e2e8f0 transparent transparent transparent; -fx-background-color: #f8fafc; -fx-border-width: 1 0 0 0;">
+                <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#handleAgendarCita" style="-fx-background-color: #22c55e; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand; -fx-padding: 10 0; -fx-font-size: 14px;" text="Confirmar Agendamiento">
+                    <graphic><FontIcon iconColor="white" iconLiteral="fas-calendar-check" iconSize="15" /></graphic>
+                </Button>
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- â•â•â• CONTENIDO CENTRAL â€” Tabla â•â•â• -->
+    <center>
+        <VBox spacing="15.0" style="-fx-background-color: #f9fafb; -fx-padding: 25px;">
+
+            <HBox alignment="CENTER_LEFT" spacing="12.0">
+                <VBox spacing="3.0">
+                    <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #1e293b;" text="Historial de Citas" />
+                    <Label style="-fx-font-size: 12px; -fx-text-fill: #6b7280;" text="Revisa y gestiona tus proximas consultas" />
+                </VBox>
+                <Region HBox.hgrow="ALWAYS" />
+                <Button mnemonicParsing="false" onAction="#handleCancelarCita" style="-fx-background-color: #f59e0b; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand; -fx-padding: 8 15; -fx-font-size: 13px;" text="Cancelar Cita Seleccionada">
+                    <graphic><FontIcon iconColor="white" iconLiteral="fas-ban" iconSize="13" /></graphic>
+                </Button>
+            </HBox>
+
+            <VBox style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.07), 10, 0, 0, 4); -fx-border-color: #e5e7eb; -fx-border-radius: 12; -fx-border-width: 1;" VBox.vgrow="ALWAYS">
+                <TableView fx:id="tablaCitas" style="-fx-background-color: transparent; -fx-border-color: transparent;" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colDoctor" prefWidth="150.0" text="Médico Asignado" />
+                        <TableColumn fx:id="colFecha" prefWidth="100.0" text="Fecha" />
+                        <TableColumn fx:id="colHora" prefWidth="80.0" text="Hora" />
+                        <TableColumn fx:id="colMotivo" prefWidth="200.0" text="Motivo" />
+                        <TableColumn fx:id="colEstado" prefWidth="120.0" text="Estado" />
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+            </VBox>
+        </VBox>
+    </center>
+
+    <!-- â•â•â• FOOTER â•â•â• -->
+    <bottom>
+        <HBox prefHeight="32.0" styleClass="footer" BorderPane.alignment="CENTER">
+            <Label styleClass="footer-text" text="VitalSched © 2026 | Portal Paciente | Todos los derechos reservados." />
+        </HBox>
+    </bottom>
+
+</BorderPane>

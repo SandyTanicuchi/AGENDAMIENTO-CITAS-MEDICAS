@@ -1,0 +1,166 @@
+.root {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* ---- PANEL IZQUIERDO ---- */
+.panel-left {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%,
+            #16305E 0%, #1A3A6B 35%, #2B5DB8 75%, #3E76D8 100%);
+}
+
+.panel-left-overlay {
+    -fx-background-color: transparent;
+}
+
+/* Círculos decorativos: dan profundidad sin necesitar una foto */
+.decor-circle-1 {
+    -fx-fill: rgba(255,255,255,0.06);
+}
+
+.decor-circle-2 {
+    -fx-fill: rgba(255,255,255,0.05);
+}
+
+.decor-circle-3 {
+    -fx-fill: rgba(62,118,216,0.35);
+}
+
+.brand-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+.brand-sub {
+    -fx-font-size: 14px;
+    -fx-text-fill: rgba(255,255,255,0.65);
+}
+
+.hero-title {
+    -fx-font-size: 34px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+.hero-desc {
+    -fx-font-size: 15px;
+    -fx-text-fill: rgba(255,255,255,0.75);
+    -fx-wrap-text: true;
+}
+
+.bullet-icon {
+    -fx-font-size: 20px;
+    -fx-background-color: rgba(255,255,255,0.14);
+    -fx-background-radius: 50;
+    -fx-padding: 10;
+    -fx-text-fill: #FFFFFF;
+}
+
+.bullet-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+.bullet-desc {
+    -fx-font-size: 13px;
+    -fx-text-fill: rgba(255,255,255,0.65);
+}
+
+/* ---- PANEL DERECHO ---- */
+.panel-right {
+    -fx-background-color: #FFFFFF;
+}
+
+.user-icon {
+    -fx-font-size: 54px;
+    -fx-text-fill: #2B5DB8;
+}
+
+.form-title {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A3A6B;
+}
+
+.form-sub {
+    -fx-font-size: 14px;
+    -fx-text-fill: #8FA3B1;
+}
+
+/* ---- Campos ---- */
+.field-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4A6572;
+}
+
+.input-field {
+    -fx-pref-height: 48px;
+    -fx-font-size: 14px;
+    -fx-background-color: #F4F8FB;
+    -fx-border-color: #D5E3EC;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 0 14 0 14;
+    -fx-text-fill: #2C3E50;
+}
+
+.input-field:focused {
+    -fx-border-color: #2B5DB8;
+    -fx-border-width: 2;
+    -fx-background-color: #FFFFFF;
+}
+
+.error-label {
+    -fx-text-fill: #E74C3C;
+    -fx-font-size: 13px;
+}
+
+/* ---- Botón ---- */
+.btn-login {
+    -fx-pref-height: 50px;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #2B5DB8;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.btn-login:hover {
+    -fx-background-color: #1A3A6B;
+}
+
+.btn-login:pressed {
+    -fx-background-color: #0F2547;
+}
+
+.link-registro {
+    -fx-text-fill: #2B5DB8;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-border-color: transparent;
+    -fx-underline: false;
+}
+
+.link-registro:hover {
+    -fx-text-fill: #1A3A6B;
+    -fx-underline: true;
+}
+
+.btn-secundario {
+    -fx-pref-height: 50px;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4A6572;
+    -fx-background-color: #F4F8FB;
+    -fx-border-color: #D5E3EC;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.btn-secundario:hover {
+    -fx-background-color: #E8F0F5;
+}

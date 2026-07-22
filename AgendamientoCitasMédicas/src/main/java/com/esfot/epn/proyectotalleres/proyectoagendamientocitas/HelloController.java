@@ -238,7 +238,6 @@ public class HelloController implements Initializable {
 
     /**
      * Cierra la sesión del Administrador y regresa a la pantalla de Login.
-     * Vinculado al botón "Salir" en el header del dashboard.fxml.
      */
     @FXML
     private void cerrarSesion() {

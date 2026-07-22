@@ -16,12 +16,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/**
- * Controlador del formulario de inicio de sesión.
- *
- * Fase 2 - Bloque 2: Integración con UsuarioService.
- * Corrección de redireccionamientos hacia vistaMedico.fxml y vistaCliente.fxml.
- */
 public class LoginController implements Initializable {
 
     @FXML private ComboBox<String> comboRol;
@@ -29,7 +23,6 @@ public class LoginController implements Initializable {
     @FXML private PasswordField    txtPassword;
     @FXML private Label            lblError;
 
-    // Se delega la lógica de negocio a la capa de servicios
     private final UsuarioService usuarioService = new UsuarioService();
 
     @Override
@@ -40,15 +33,8 @@ public class LoginController implements Initializable {
                 "Cliente"
         ));
         comboRol.getSelectionModel().selectFirst();
-
-        // Permite hacer login con Enter desde el campo contraseña
         txtPassword.setOnAction(e -> handleLogin());
     }
-
-    // ----------------------------------------------------------------
-    // ACCIÓN: Iniciar sesión
-    // ----------------------------------------------------------------
-
     @FXML
     private void handleLogin() {
         String rolSeleccionado = comboRol.getValue();
@@ -60,8 +46,6 @@ public class LoginController implements Initializable {
             mostrarError("Por favor complete todos los campos.");
             return;
         }
-
-        // Validación y creación de sesión encapsulada en la capa de servicios
         boolean exito = usuarioService.iniciarSesion(usuario, password, rolSeleccionado);
 
         if (!exito) {
@@ -73,13 +57,8 @@ public class LoginController implements Initializable {
         irADashboard();
     }
 
-    // ----------------------------------------------------------------
-    // NAVEGAR al panel según el rol autenticado
-    // ----------------------------------------------------------------
 
     private void irADashboard() {
-        // CORRECCIÓN: "Médico" va a vistaMedico.fxml (fuera de InterfazDoctor.fxml)
-        //             "Cliente" va a vistaCliente.fxml
         String vista = switch (Sesion.getRol()) {
             case ADMINISTRADOR -> "dashboard.fxml";
             case MEDICO        -> "vistaMedico.fxml";
@@ -100,11 +79,6 @@ public class LoginController implements Initializable {
             mostrarError("Error al cargar la interfaz principal. Posiblemente la vista aún no está creada.");
         }
     }
-
-    // ----------------------------------------------------------------
-    // ACCIÓN: Abrir ventana de registro
-    // ----------------------------------------------------------------
-
     @FXML
     private void handleAbrirRegistro() {
         try {
@@ -124,11 +98,6 @@ public class LoginController implements Initializable {
             System.err.println("[LoginController] No se pudo abrir la ventana de registro: " + e.getMessage());
         }
     }
-
-    // ----------------------------------------------------------------
-    // AUXILIARES
-    // ----------------------------------------------------------------
-
     private void mostrarError(String mensaje) {
         lblError.setText(mensaje);
         lblError.setVisible(true);

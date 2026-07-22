@@ -11,10 +11,15 @@ VitalSched es un aplicacion de escritorio interactiva e intuitiva que te permite
 
 ## Arquitectura: MVC con DAO y servicio
 Src
+
   |--java
+  
   |  |--AgendamientoCitasMédicas/src/main/java/com/esfot/epn/proyectotalleres
+  
   |    	|--modelo
+  
   |    	|--servicio
+  
   |--resources
   
 - **Vista**:
@@ -91,6 +96,6 @@ Proyecto académico — EPN (Escuela Politécnica Nacional)
 ---
 ##Desarrolladores
 - **Emilio Gavilánez**
-- **Claudia Coello**
+- ** Claudia Coello**
 - **Dennes Molina**
 - **Sandy Tanicuchi**

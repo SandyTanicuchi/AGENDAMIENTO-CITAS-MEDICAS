@@ -5,29 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- * DAO para la gestión de Usuarios del sistema.
- * Maneja login y registro de nuevas cuentas.
- *
- * Fase 2 - Bloque 1: Integración con ConexionMySQL. 
- * Consulta id_paciente e id_doctor para el Singleton Sesion.
- */
 public class UsuarioDAO {
-
-    // ----------------------------------------------------------------
-    // VALIDAR LOGIN
-    // ----------------------------------------------------------------
-
-    /**
-     * Valida las credenciales del usuario contra la BD.
-     * La comparación de rol es exacta (case-sensitive).
-     *
-     * @param nombreUsuario Usuario a validar
-     * @param clave         Contraseña (Fase 2: pendiente hash bcrypt)
-     * @return Objeto Usuario si las credenciales son válidas; null en caso contrario
-     */
     public Usuario validarLogin(String nombreUsuario, String clave) {
-        // Se añaden id_paciente e id_doctor (H-14)
         String query = "SELECT id_usuario, usuario, rol, id_paciente, id_doctor " +
                        "FROM USUARIOS WHERE usuario = ? AND clave = ? AND estado = 'Activo'";
 
@@ -42,8 +21,7 @@ public class UsuarioDAO {
                     if (rs.next()) {
                         String rol = rs.getString("rol");
                         int idEntidadVinculada = 0;
-                        
-                        // Extraer el ID vinculado según el rol
+            
                         if ("Cliente".equals(rol)) {
                             idEntidadVinculada = rs.getInt("id_paciente");
                         } else if ("Médico".equals(rol)) {
@@ -65,20 +43,6 @@ public class UsuarioDAO {
 
         return null;
     }
-
-    // ----------------------------------------------------------------
-    // REGISTRAR USUARIO
-    // ----------------------------------------------------------------
-
-    /**
-     * Registra un nuevo usuario en la BD.
-     *
-     * @param nombre   Nombre completo del usuario
-     * @param usuario  Nombre de usuario único (login)
-     * @param clave    Contraseña
-     * @param rol      Rol: Administrador | Médico | Cliente
-     * @return true si se creó correctamente; false si el usuario ya existe u otro error
-     */
     public boolean registrarUsuario(String nombre, String usuario, String clave, String rol) {
         // Verificar que el nombre de usuario no exista
         if (existeUsuario(usuario)) {
@@ -104,11 +68,6 @@ public class UsuarioDAO {
             return false;
         }
     }
-
-    // ----------------------------------------------------------------
-    // AUXILIAR: verificar si existe el nombre de usuario
-    // ----------------------------------------------------------------
-
     private boolean existeUsuario(String usuario) {
         String query = "SELECT COUNT(*) FROM USUARIOS WHERE usuario = ?";
         try (Connection conn = ConexionMySQL.conectar()) {

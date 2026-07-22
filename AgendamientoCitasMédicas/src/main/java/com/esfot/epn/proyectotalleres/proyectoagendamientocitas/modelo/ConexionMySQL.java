@@ -7,14 +7,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-/**
- * Provee conexiones JDBC a MySQL leyendo las credenciales desde config.properties.
- * Clase utilitaria: solo abre conexiones, no las gestiona.
- *
- * Corrige H-2 (credenciales hardcodeadas) y H-12 (nombre incorrecto de ConexioDashboard).
- *
- * Uso: try (Connection conn = ConexionMySQL.conectar()) { ... }
- */
 public final class ConexionMySQL {
 
     private static final String URL;
@@ -45,13 +37,6 @@ public final class ConexionMySQL {
         }
         return props;
     }
-
-    /**
-     * Abre y devuelve una nueva conexión a la BD.
-     * El llamador es responsable de cerrarla con try-with-resources.
-     *
-     * @return Connection activa, o null si el motor no está disponible.
-     */
     public static Connection conectar() {
         try {
             return DriverManager.getConnection(URL, USUARIO, CLAVE);

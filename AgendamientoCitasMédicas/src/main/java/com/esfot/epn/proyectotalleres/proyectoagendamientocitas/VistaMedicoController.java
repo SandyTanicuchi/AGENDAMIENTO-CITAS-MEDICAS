@@ -29,13 +29,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
-/**
- * Controlador de la vista principal para los usuarios con rol Médico.
- *
- * CORRECCIÓN: Si idEntidadVinculada es 0, se recupera el id_doctor
- * directamente desde la BD para garantizar que el filtro de citas
- * funcione correctamente.
- */
 public class VistaMedicoController implements Initializable {
 
     @FXML private Label lblBienvenida;
@@ -72,7 +65,6 @@ public class VistaMedicoController implements Initializable {
         // Poblar ComboBox de Estados
         comboEstado.setItems(FXCollections.observableArrayList(EstadoCita.values()));
 
-        // Si la sesión no tiene idDoctor vinculado, recuperarlo desde la BD
         if (Sesion.getIdEntidadVinculada() <= 0) {
             int idDoctor = recuperarIdDoctorDesdeDB(Sesion.getIdUsuario());
             if (idDoctor > 0) {
@@ -89,18 +81,12 @@ public class VistaMedicoController implements Initializable {
         }
 
         cargarDatosTabla();
-
-        // Listener para detectar selección en la tabla
         tablaCitas.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 mostrarDetallesCita(newSelection);
             }
         });
     }
-
-    /**
-     * Consulta id_doctor de la tabla USUARIOS para el usuario logueado.
-     */
     private int recuperarIdDoctorDesdeDB(int idUsuario) {
         String query = "SELECT id_doctor FROM USUARIOS WHERE id_usuario = ? AND id_doctor IS NOT NULL";
         try (Connection conn = ConexionMySQL.conectar()) {
@@ -118,11 +104,6 @@ public class VistaMedicoController implements Initializable {
         }
         return 0;
     }
-
-    /**
-     * Muestra un Dialog modal para crear el perfil de doctor
-     * y vincularlo al usuario actual en caso de que no lo tenga.
-     */
     private void solicitarPerfilMedico() {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle("Completar Perfil Médico");

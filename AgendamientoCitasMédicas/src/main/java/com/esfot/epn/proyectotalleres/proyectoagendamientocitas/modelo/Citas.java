@@ -1,24 +1,17 @@
 package com.esfot.epn.proyectotalleres.proyectoagendamientocitas.modelo;
 
-/**
- * Representa una cita médica tal como llega del JOIN en la BD.
- *
- * Fase 2 – Bloque 1:
- *  - Se agregan idPacienteRef e idDoctorRef para control de propiedad por rol.
- *  - Se agrega notasMedicas para el diagnóstico registrado durante la atención.
- */
 public class Citas {
 
     private int    id;
-    private int    idPacienteRef;   // control de propiedad: "¿es cita del cliente logueado?"
-    private int    idDoctorRef;     // filtro para la vista del médico
-    private String paciente;        // nombre completo (del JOIN)
-    private String doctor;          // nombre completo (del JOIN)
-    private String fecha;           // formato yyyy-MM-dd
-    private String hora;            // formato HH:mm
+    private int    idPacienteRef;  
+    private int    idDoctorRef;     
+    private String paciente;        
+    private String doctor;        
+    private String fecha;          
+    private String hora;            
     private String motivo;
-    private String notasMedicas;    // diagnóstico registrado por el médico
-    private String estadoCita;      // nombre desde la tabla ESTADOS
+    private String notasMedicas;    
+    private String estadoCita;     
 
     /** Constructor completo — usado por los DAOs con resultado de JOIN. */
     public Citas(int id, int idPacienteRef, int idDoctorRef,
@@ -37,10 +30,7 @@ public class Citas {
         this.estadoCita    = estadoCita;
     }
 
-    /**
-     * Constructor reducido para datos mock en controladores.
-     * Compatibilidad temporal — se elimina en el Bloque 3 al limpiar los mocks.
-     */
+    
     public Citas(int id, String paciente, String doctor,
                  String fecha, String hora, String motivo, String estadoCita) {
         this(id, 0, 0, paciente, doctor, fecha, hora, motivo, null, estadoCita);

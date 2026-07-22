@@ -10,17 +10,19 @@ VitalSched es un aplicacion de escritorio interactiva e intuitiva que te permite
 ---
 
 ## Arquitectura: MVC con DAO y servicio
-Src
 
-  |--java
-  
-  |  |--AgendamientoCitasMédicas/src/main/java/com/esfot/epn/proyectotalleres
-  
-  |    	|--modelo
-  
-  |    	|--servicio
-  
-  |--resources
+```text
+src
+├── main
+│   ├── java
+│   │   └── com
+│   │       └── esfot
+│   │           └── epn
+│   │               └── proyectotalleres
+│   │                   ├── modelo
+│   │                   └── servicio
+│   └── resources
+```
   
 - **Vista**:
 

@@ -6,23 +6,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-/**
- * DAO completo de Doctores: Insertar, Actualizar, Eliminar y Listar.
- * Todas las operaciones se realizan contra la BD MySQL CITAS_MEDICAS.
- */
 public class DoctoresDAO {
 
     private final ConexioDashboard conexionManager = new ConexioDashboard();
 
-    // ----------------------------------------------------------------
-    // INSERTAR
-    // ----------------------------------------------------------------
-
-    /**
-     * Registra un nuevo doctor en la base de datos.
-     * @return el ID autogenerado si se insertó correctamente; -1 en caso de error.
-     */
+    
+    /**Registra un nuevo doctor en la base de datos*/
     public int registrarDoctor(Doctores doctor) {
         String query = "INSERT INTO DOCTORES (nombre, apellido, especialidad, telefono, correo, estado) " +
                        "VALUES (?, ?, ?, ?, ?, ?)";
@@ -52,14 +41,7 @@ public class DoctoresDAO {
         }
         return -1;
     }
-
-    // ----------------------------------------------------------------
-    // ACTUALIZAR
-    // ----------------------------------------------------------------
-
-    /**
-     * Actualiza los datos de un doctor existente identificado por id_doctor.
-     */
+     /**Actualiza los datos de un doctor existente identificado por id_doctor */
     public boolean actualizarDoctor(Doctores doctor) {
         String query = "UPDATE DOCTORES " +
                        "SET nombre=?, apellido=?, especialidad=?, telefono=?, correo=?, estado=? " +
@@ -84,16 +66,7 @@ public class DoctoresDAO {
             return false;
         }
     }
-
-    // ----------------------------------------------------------------
-    // ELIMINAR
-    // ----------------------------------------------------------------
-
-    /**
-     * Elimina un doctor por su id_doctor.
-     * NOTA: Si el doctor tiene citas activas la BD lanzará error de FK.
-     * En ese caso se recomienda cambar su estado a 'Inactivo'.
-     */
+    /**Elimina un doctor por su id_doctor.*/
     public boolean eliminarDoctor(int id) {
         String query = "DELETE FROM DOCTORES WHERE id_doctor=?";
 
@@ -110,16 +83,7 @@ public class DoctoresDAO {
         }
     }
 
-    // ----------------------------------------------------------------
-    // LISTAR
-    // ----------------------------------------------------------------
-
-    /**
-     * Retorna todos los doctores ordenados por apellido y nombre.
-     */
-    /**
-     * Retorna TODOS los doctores (para el panel de gestión del Admin).
-     */
+    /**Retorna todos los doctores ordenados por apellido y nombre.*/
     public ObservableList<Doctores> obtenerListaDoctores() {
         ObservableList<Doctores> lista = FXCollections.observableArrayList();
         String query = "SELECT id_doctor, nombre, apellido, especialidad, telefono, correo, estado " +
@@ -148,10 +112,6 @@ public class DoctoresDAO {
         }
         return lista;
     }
-
-    /**
-     * Retorna solo doctores ACTIVOS (para el ComboBox del portal de pacientes).
-     */
     public ObservableList<Doctores> obtenerDoctoresActivos() {
         ObservableList<Doctores> lista = FXCollections.observableArrayList();
         String query = "SELECT id_doctor, nombre, apellido, especialidad, telefono, correo, estado " +
